@@ -3,9 +3,10 @@ print.CA3variants <-function(x, digits=3,...) {
     print(x$iteration)
     cat("\n    RESULTS for 3-way Correspondence Analysis\n")
         if ((x$ca3type=="CA3")|(x$ca3type=="OCA3")){
-        cat("Three-way Pearson ratio \n")
+        cat("Three-way Pearson ratio table \n")
         print(round(x$xs, digits = 2))
-    } else {
+    } 
+else {
         cat("Three-way centered column profile table \n")
         print(round(x$xs, digits = 2))
     }
@@ -20,8 +21,16 @@ cat("\n Tube marginals\n\n")
     cat("Explained inertia ", x$nxhat2, "\n\n")
     cat("Total inertia ", x$inertia, "\n\n")
     cat("Percent inertia  \n\n")
-    print(round(x$inertiapc0,digits=digits))
-    cat("Proportion of inertia  \n\n")
+    print(round(x$inertiapc,digits=digits))
+cat("The percentage contribution of the three components to the total variation\n\n")
+    print(round(x$inertiapc,digits=digits))
+cat("The vector of the percentage contributions of the interactively coded colum-tube  components to the total inertia, 
+useful for making interactively coded biplots\n\n")
+    print(round(x$inertiacoltub,digits=digits))
+cat("The vector of the percentage contributions of the row  components to the total inertia, 
+useful for making response biplots\n\n")
+    print(round(x$inertiarow,digits=digits))
+    cat("Proportion of explained inertia (when reducing dimensions)\n\n")
     print(x$prp)
     cat("\n Rows in principal coordinates\n\n")
     print(round(x$fi), digits = digits)

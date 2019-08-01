@@ -13,8 +13,8 @@ When the input parameter is \code{biptype = "row"}, the function displays the ro
 By default, \code{biptype = "column-tube"}.
 }
 \usage{
-\S3method{plot}{CA3variants}(x, firstaxis = 1, lastaxis = 2, cex = 0.8, 
-plottype = "biplot", biptype="column-tube", prop = 1, scaleplot = 1, arrow = T, pos=1, 
+\S3method{plot}{CA3variants}(x, firstaxis = x$firstaxis, lastaxis = x$lastaxis, cex = 0.8,  
+biptype="column-tube", prop = 1, scaleplot = 1,  pos=1, 
 size=2, size2=3,...)
 }
 \arguments{
@@ -31,10 +31,10 @@ The dimension reflected along the vertical axis.
 The parameter that specifies the size of character labels of points in graphical displays. 
 By default, it is equal to 0.8.
 }
-  \item{plottype}{
-The input parameter for specifying what kind of graphical display is requested. By default, 
-it is equal to biplot.
-}
+%  \item{plottype}{
+%The input parameter for specifying what kind of graphical display is requested. By default, 
+%it is equal to biplot.
+%}
  \item{biptype}{
 The input parameter for specifying what kind of biplot is requested. By default, 
 it is equal to \code{column-tube}, but could be \code{row}.
@@ -45,9 +45,9 @@ The scaling parameter for changing the limits of the plotting area. By default, 
   \item{scaleplot}{
 The scaling parameter for pos=1,size=2,cols=c(1,4). By default, it is equal to 1.
 }
-  \item{arrow}{
-The flag parameter to display arrows (T or F), if T the distances between the column-tube categories are represented as arrows.
-}
+%  \item{arrow}{
+%The flag parameter to display arrows (T or F), if T the distances between the column-tube categories are represented as arrows.
+%}
 \item{pos}{The input parameter for changing the label position. By default, it is equal to 1.
 }
 \item{size}{The input parameter for specifying the size of points. By default, it is equal to 2.
@@ -85,8 +85,10 @@ ris.ca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "CA3")
 plot(ris.ca3)
 ris.nsca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "NSCA3") 
 plot(ris.nsca3)
-ris.oca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "OCA3",norder=3) 
+ris.oca3<-CA3variants(happy, ca3type = "OCA3",norder=3) 
 plot(ris.oca3)
+ris.onsca3<-CA3variants(happy, ca3type = "ONSCA3",norder=3) 
+plot(ris.onsca3)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

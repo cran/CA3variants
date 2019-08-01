@@ -22,17 +22,18 @@ fg <- f %*% t(gf)#fg de dimensions (JxK) x p
 xf <- flatten(x)#xf de dimensions I x (JxK)
 y <- xf %*% fg# y de dimensions I x p
 #if(ind) {
-s <- t(y) %*% y
-w <- svd(s)
-d <- 1/sqrt(w$d)
-u <- as.matrix(w$u)
+#s <- t(y) %*% y
+#w <- svd(s)
+#d <- 1/sqrt(w$d)
+#u <- as.matrix(w$u)
 #a <- y %*% u %*% diag(d, p, p) %*% t(u) #rotation not needed!!
-a <- y %*% u %*% diag(d, p, p) 
+#a <- y %*% u %*% diag(d, p, p) 
 #}
 #else {
-#res <- svd(y)
+#browser()
+res <- svd(y)
 #a <- res$u %*% t(res$v) #it implies a rotation not needed!!
-#a <- res$u  
+a <- res$u  
 #}
 #browser()
 list(a = as.matrix(a), b = as.matrix(b), cc = as.matrix(cc), g = g, x = x)

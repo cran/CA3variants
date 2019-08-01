@@ -33,10 +33,11 @@ The number of components for the third mode. By default, \code{r = dim(Xtable)[[
 }
   \item{ca3type}{
 The specification of the analysis to be performed. 
-If \code{ca3type = "CA3"}, then a three-way (symmetrical) correspondence analysis will be performed 
+If \code{ca3type = "CA3"}, then a three-way symmetrical correspondence analysis will be performed 
 (default analysis). 
 If \code{ca3type = "NSCA3"}, then three-way non-symmetrical correspondence analysis  will be performed.
-If \code{ca3type = "OCA3"}, then ordered three-way correspondence analysis  will be performed.
+If \code{ca3type = "OCA3"}, then ordered three-way symmetrical correspondence analysis  will be performed.
+If \code{ca3type = "ONSCA3"}, then ordered three-way non-symmetrical correspondence analysis  will be performed.
 }
   \item{test}{
 Threshold used in the algorithm for stopping it after the convergence of the
@@ -56,6 +57,7 @@ For a detailed description of the output one can see: \cr
 the output value of \code{ca3basic} if the input parameter is \code{ca3type="CA3"};
 the output value of \code{nsca3basic} if the input parameter is \code{ca3type="NSCA3"};
 the output value of \code{oca3basic} if the input parameter is \code{ca3type="OCA3"} 
+the output value of \code{onsca3basic} if the input parameter is \code{ca3type="ONSCA3"} 
  }
 %\item{ca3corporateresults}{The output of the kind of three-way correspondence analysis analysis considered.}
 %\item{DataMatrix}{The original three-way contingency table.}
@@ -100,6 +102,9 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 \examples{
 data(happy)
 CA3variants(happy,p=2,q=2,r=2, ca3type = "CA3") 
+CA3variants(happy,p=2,q=2,r=2, ca3type = "OCA3") 
+CA3variants(happy,p=2,q=2,r=2, ca3type = "NSCA3") 
+CA3variants(happy,p=2,q=2,r=2, ca3type = "ONSCA3") 
 }
 % R documentation directory.
 \keyword{three-way symmetrical correspondence analysis.}

@@ -1,8 +1,10 @@
 S3method("print","CA3variants")
 S3method("plot","CA3variants")
-import(methods,tools,ggplot2,ggrepel,gridExtra)
- importFrom("grDevices", "dev.new")
-     importFrom("graphics", "abline", "arrows", "legend", "lines", "par",
+import(methods,tools,ggplot2,ggrepel,gridExtra,multichull)
+importFrom("grDevices", "dev.new")
+importFrom("multichull","CHull")
+importFrom("stats","rmultinom","rpois")
+importFrom("graphics", "abline", "arrows", "legend", "lines", "par",
      "plot", "plot.new", "points", "text", "title")
      importFrom("stats", "pchisq", "qchisq")
 importFrom("ggplot2","ggplot")

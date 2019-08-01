@@ -25,12 +25,12 @@ tube names [1:2] "urban", "rural"
 Beh EJ and Lombardo R 2014 Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons. \cr
 }
 \examples{
-olive <-
-structure(c(20L, 15L, 12L, 17L, 16L, 28L, 18L, 17L, 18L, 18L, 
-6L, 25L, 12L, 9L, 23L, 21L, 19L, 30L, 30L, 22L, 21L, 17L, 8L, 
-12L, 23L, 18L, 20L, 18L, 10L, 15L, 11L, 9L, 26L, 19L, 17L, 24L
+olive <-structure(c(20, 15, 12, 17, 16, 28, 18, 17, 18, 18, 
+6, 25, 12, 9, 23, 21, 19, 30, 30, 22, 21, 17, 8, 
+12, 23, 18, 20, 18, 10, 15, 11, 9, 26, 19, 17, 24
 ), .Dim = c(6L, 3L, 2L), .Dimnames = list(c("A", "B", "C", "D", 
 "E", "F"), c("NW", "NE", "SW"), c("urban", "rural")))
 dim(olive)
+data(olive)
 }
 \keyword{datasets}

@@ -1,15 +1,15 @@
-\name{oca3basic}
-\alias{oca3basic}
+\name{onsca3basic}
+\alias{onsca3basic}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Three-way Ordered Symmetrical Correspondence Analysis
+Three-way Ordered Non-Symmetrical Correspondence Analysis
 }
 \description{
-This function is used in the main function CAvariants when the input parameter is \code{ca3type="OCA3"}. \cr
+This function is used in the main function CAvariants when the input parameter is \code{ca3type="ONSCA3"}. \cr
 It performs the three-way symmetric correspondence analysis by TUCKALS3.
 }
 \usage{
-oca3basic(x, p, q, r, test = 10^-6, ctr = T, std = T, norder=3)
+onsca3basic(x, p, q, r, test = 10^-6, ctr = T, std = T, norder=3)
 }
 \arguments{
   \item{x}{The three-way contingency table.

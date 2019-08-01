@@ -20,8 +20,8 @@ nn <- dim(f3)
     pi <- apply(p3, 1, sum)
     pj <- apply(p3, 2, sum)
     pk <- apply(p3, 3, sum)
-    pijk <- pi %o% pj %o% pk #to get the product pi..p.j.p..k
-    p1jk <- ui %o% pj %o% pk #to get the product p.j.p..k
+    pijk <- pi %o% pj %o% pk #to get the product 
+    p1jk <- ui %o% pj %o% pk #to get the product 
         khi3 <-n* sum(((p3 - pijk)^2/pijk)) #khi3 index
     pij <- apply(p3, c(1, 2), sum)
     pik <- apply(p3, c(1, 3), sum)
@@ -58,7 +58,7 @@ mj <- c(1:nj)
     mk <- c(1:nk)
     Cpoly <- emerson.poly(mk, pk)
     polk <- diag(sqrt(pk)) %*%(Cpoly[,-1]) #poly with weight Dk
-##################################################partial term \pi_ij
+##################################################partial term 
 fij <- (pij - p2ij)/sqrt(p2ij)
 z3par<-   t(poli[,-1])%*%fij%*%polj[,-1]
 z3par2<-   t(poli)%*%fij%*%polj
@@ -91,7 +91,7 @@ zij<-rbind(zi,zj)
 nomi<-paste("poly",1:(ni-1),sep="")
 nomj<-paste("poly",1:(nj-1),sep="")
 dimnames(zij)<-list(c(nomi,"chi2ij-index",nomj,"chi2ij-index"),c("chi2ij-poly","%inertia","df","p-value"))
-#################################################partial term \pi_ik
+#################################################partial term 
 fik <- (pik - p2ik)/sqrt(p2ik)
 z3par<-   t(poli[,-1])%*%fik%*%polk[,-1]
 chi2ik=sum(z3par^2)*n 
@@ -124,7 +124,7 @@ zik<-rbind(zi,zk)
 nomi<-paste("poly",1:(ni-1),sep="")
 nomk<-paste("poly",1:(nk-1),sep="")
 dimnames(zik)<-list(c(nomi,"chi2ik-index",nomk,"chi2ik-index"),c("chi2ik-poly","%inertia","df","p-value"))
-################################################partial term \pi_jk
+################################################partial term 
    fjk <- (pjk - p2jk)/sqrt(p2jk)
 z3par<-   t(polj[,-1])%*%fjk%*%polk[,-1]
 z3par2<-   t(polj)%*%fjk%*%polk

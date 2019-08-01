@@ -12,6 +12,8 @@ If the input parameter, in \code{CA3variants}, is \code{ca3type="NSCA3"},
 the function prints the results of three-way non-symmetrical correspondence analysis.
 If the input parameter, in \code{CA3variants}, is \code{ca3type="OCA3"},
 the function prints the results of ordered three-way symmetrical correspondence analysis.
+If the input parameter, in \code{CA3variants}, is \code{ca3type="ONSCA3"},
+the function prints the results of ordered three-way non-symmetrical correspondence analysis.
 When the input parameter, in \code{print.CA3variants}, is \code{digits = 3},
 the function prints all the results using three digital numbers.
 }
@@ -44,10 +46,10 @@ In detail:
 \item{DataMatrix}{The original three-way contingency table.}
 \item{xs}{The centred and weighted three-way contingency table when the input parameters are \code{ctr=T} 
 and \code{std=T}.}
-\item{xhat}{The three-way contingency table reconstructed by the three component matrices 
+\item{xhat}{The three-way contingency table approximated (reconstructed) by the three component matrices 
 (of dimension Ixp, Jxq, and Kxr) and the core array.}
-\item{nxhat2}{The sum of squares of the xhat table elements.}
-\item{prp}{The ratio between the sum of squares of the xhat table elements and of the xs table elements.} 
+\item{nxhat2}{The sum of squares of the approximated contingency table.}
+\item{prp}{The ratio between the inertia of the complete contingency table and the inertia of the approximated contingency table.} 
 \item{fi}{The principal row coordinates.}
 \item{fiC}{The standard row coordinates.}
 \item{gjk}{The principal colum-tube coordinates.}
@@ -57,16 +59,20 @@ and \code{std=T}.}
 \item{flabels}{The row category labels.}
 \item{glabels}{The column category labels.}
 \item{maxaxes}{The maximum dimension to consider.}
-\item{inertia}{The total inertia of three-way symmetrical or non-symmetrical correspondence analysis.}
-\item{inertiapc0}{The percentage contribution of the three components to the total variation.}
-\item{inertiapc}{The vector of the percentage contributions of the three components to the total inertia.}
+\item{inertia}{The total inertia of a variant of three-way correspondence analysis.}
+\item{inertiaRSS}{The residual inertia of a variant of three-way correspondence analysis.}
+\item{inertiapc}{The percentage contribution of the three components to the total variation.}
+\item{inertiacoltub}{The vector of the percentage contributions of the interactively coded colum-tube  components to the total inertia, 
+useful for making interactively coded biplots.}
+\item{inertiarow}{The vector of the percentage contributions of the row  components to the total inertia, 
+useful for making response biplots.}
 \item{iproduct}{The inner product between the standard row coordinates (fi) and the column-tube principal 
 coordinates (gjk).}
 \item{g}{The core array (i.e. the generalized singular values) calculated by using the Tuckals3 algorithm. } 
-\item{index3}{When \code{ca3type = "CA3"}, the index3 represents the partition of the Pearson index 
+\item{index3}{When \code{ca3type = "CA3"} or \code{ca3type = "OCA3"}, the index3 represents the partition of the Pearson index 
 into three two-way association terms and one three-way association term.
 It also shows the C statistic of each term, its degrees of freedom and p-value.
-If \code{ca3type = "NSCA3"} index3 returns the partition of the Marcotorchino index into three 
+If \code{ca3type = "NSCA3"} or \code{ca3type = "ONSCA3"}, the index3 returns the partition of the Marcotorchino index into three 
 two-way association terms and one three-way association term. It also shows the C statistic of each term, 
 its degrees of freedom and p-value.}
 \item{ca3type}{The specification of the analysis to be performed.
@@ -74,8 +80,9 @@ When \code{ca3type = "CA3"}, then a three-way symmetrical correspondence analysi
 (default analysis). If \code{ca3type = "NSCA3"}, then three-way non-symmetrical correspondence analysis 
 will be performed, where one of the variables is the response to be predicted given the other two variables. 
 These two three-way variants use the Tucker3 method of decomposition.
-When \code{ca3type = "OCA3"}, then an ordered three-way symmetrical correspondence analysis will be performed. 
-Differently, this analysis uses a new method of decomposition called Trivariate Moment Decomposition.}
+When \code{ca3type = "OCA3"} or \code{ca3type = "ONSCA3"}, then an ordered three-way symmetrical or non-symmetrical
+correspondence analysis will be performed. 
+Differently, these analysis use a new method of decomposition called Trivariate Moment Decomposition.}
 \item{iteration}{The number of iterations that are required for the Tuckals3 algorithm to converge.}
 }
 \references{
@@ -99,6 +106,9 @@ ris.nsca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "NSCA3")
 print(ris.nsca3)
 ris.oca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "OCA3",norder=3) 
 print(ris.oca3)
+ris.onsca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "ONSCA3",norder=3) 
+print(ris.onsca3)
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
