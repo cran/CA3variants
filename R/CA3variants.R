@@ -1,4 +1,4 @@
-CA3variants <-
+CA3variants<-
 function(Xtable, p = dim(Xtable)[[1]], q = dim(Xtable)[[2]], 
                         r = dim(Xtable)[[3]], ca3type = "CA3", test = 10^-6, norder=3){ 
         X <- as.array(Xtable)
@@ -93,11 +93,14 @@ productfigjk <- fiStandard %*% t(gjk)
     # Calculation inertia values                                       #
     #                                                                  #
     ####################################################################
-    inertia <- sum(S$xs^2)
-    inertiapc0 <- (S$g^2/inertia*100)
-    inertiaRSS <- (inertia-sum(S$g^2))
- inertiacoltub <- apply(inertiapc0,1,sum)  
-inertiarow <- c(apply(inertiapc0,c(2,3),sum))  
+    inertiaorig <- sum(S$xs^2) #total inertia of the table (I,J,K) equal to the related index 
+inertiatot<-sum(S$g^2) #inertia reconstructed when p,q and r are different from I, J and K dimensions
+inertiapcsum <- (sum(S$g^2)/inertiaorig*100)  
+  inertiapc <- (S$g^2/inertiaorig*100)
+    inertiaRSS <- (inertiaorig-inertiatot)
+ inertiacoltub <- apply(inertiapc,1,sum)  
+inertiarow <- c(apply(inertiapc,c(2,3),sum)) 
+names(inertiarow)<-paste("ax", 1:fiCdim, sep = "")
  #   ca3corporateresults<-new("ca3corporateresults", DataMatrix = X, xs = 
  #                                S$xs, xhat = S$xhat, nxhat2 = S$nxhat2, prp = S$prp, a=S$a,b=S$b,cc=S$cc,
 #fi = fi, fiStandard= fiStandard, gjk = gjk,gjkStandard=gjkStandard, rows = ni, cols = nj, tubes = nk, flabels = 
@@ -108,11 +111,11 @@ inertiarow <- c(apply(inertiapc0,c(2,3),sum))
    #   print(ca3corporateresults)
    # plot(ca3corporateresults, cex = cex, firstaxis = firstaxis, lastaxis = 
    #         lastaxis, plottype = plottype, prop = prop,arrow=arrow)
-ca3corporateresults<-list(DataMatrix = X, xs = 
-                                 S$xs, xhat = S$xhat, nxhat2 = S$nxhat2, prp = S$prp, a=S$a,b=S$b,cc=S$cc,
+ca3corporateresults<-list(DataMatrix = X, xs =S$xs, xhat = S$xhat, nxhat2 = S$nxhat2, prp = S$prp, a=S$a,b=S$b,cc=S$cc,
 fi = fi, fiStandard= fiStandard, gjk = gjk,gjkStandard=gjkStandard, rows = ni, cols = nj, tubes = nk, flabels = 
                                  labelfi, glabels = labelgjk, maxaxes = maxaxes, 
-                             inertia = inertia, inertiaRSS=inertiaRSS, inertiapc = inertiapc0, inertiacoltub = inertiacoltub,inertiarow=inertiarow, 
+                             inertiaorig = inertiaorig,inertiatot=inertiatot, inertiaRSS=inertiaRSS, inertiapc=inertiapc,
+inertiapcsum = inertiapcsum, inertiacoltub = inertiacoltub,inertiarow=inertiarow, 
                              iproduct = productfigjk, g = S$g, index3 = index3, ca3type = 
                                  ca3type, iteration = S$iteration,firstaxis=firstdim,lastaxis=lastdim)
  

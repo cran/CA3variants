@@ -83,8 +83,8 @@ Rosaria Lombardo, Michel van de Velden, Eric J Beh.
 }
 \examples{
 data(happy)
-tunelocal(happy, ca3type = "NSCA3", boots=FALSE)
-tunelocal(happy,ca3type="CA3", boots=TRUE,  nboots=3)
+tunelocal(happy, ca3type="CA3", boots=FALSE)
+%tunelocal(happy, ca3type = "NSCA3", boots=FALSE)
 %tunelocal(happy,ca3type="OCA3", boots=TRUE, boottype="bootpsimple", nboots=5)
 %tunelocal(happy,ca3type="ONSCA3", boots=TRUE, boottype="bootnp", nboots=10)
 }

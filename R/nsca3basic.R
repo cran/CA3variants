@@ -20,7 +20,7 @@ function(x, p, q, r, test = 10^-6, ctr = T, std = T){
     xhat <- reconst3(res)
     nx2 <- sum(xs^2)
     res$tot <- nx2    
-    nxhat2 <- sum(xhat^2)
+   # nxhat2 <- sum(xhat^2)
     nxhat2 <- sum(res$g^2)
     prp <- nxhat2/nx2
     

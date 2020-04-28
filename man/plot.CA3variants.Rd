@@ -13,9 +13,9 @@ When the input parameter is \code{biptype = "row"}, the function displays the ro
 By default, \code{biptype = "column-tube"}.
 }
 \usage{
-\S3method{plot}{CA3variants}(x, firstaxis = x$firstaxis, lastaxis = x$lastaxis, cex = 0.8,  
-biptype="column-tube", prop = 1, scaleplot = 1,  pos=1, 
-size=2, size2=3,...)
+\S3method{plot}{CA3variants}(x, firstaxis = 1, lastaxis = 2, cex = 0.8,  
+biptype="column-tube", scaleplot = 1,  plot3d = FALSE, pos=1, 
+size1=1, size2=2, invproj = FALSE, col1 = "blue", col2 = "red",...)
 }
 \arguments{
   \item{x}{
@@ -39,21 +39,25 @@ By default, it is equal to 0.8.
 The input parameter for specifying what kind of biplot is requested. By default, 
 it is equal to \code{column-tube}, but could be \code{row}.
 }
-  \item{prop}{
-The scaling parameter for changing the limits of the plotting area. By default, it is equal to 1.
-}
-  \item{scaleplot}{
+   \item{scaleplot}{
 The scaling parameter for pos=1,size=2,cols=c(1,4). By default, it is equal to 1.
 }
 %  \item{arrow}{
 %The flag parameter to display arrows (T or F), if T the distances between the column-tube categories are represented as arrows.
 %}
+\item{plot3d}{The logical parameter specifies whether a 3D plot is to be included 
+in the output or not. By default, \code{plot3d = FALSE}.
+}
 \item{pos}{The input parameter for changing the label position. By default, it is equal to 1.
 }
-\item{size}{The input parameter for specifying the size of points. By default, it is equal to 2.
+\item{size1}{The input parameter for specifying the size of pointers. By default, it is equal to 1.
 }
-\item{size2}{The input parameter for specifying the label size. By default, it is equal to 3.
+\item{size2}{The input parameter for specifying the label size. By default, it is equal to 2.
 }
+\item{invproj}{The logical parameter specifies whether to portray standard coordinates as vectors and principal coordinates as points or vice-versa.
+By default, \code{invproj = TRUE}.}
+\item{col1}{The input parameter for specifying the row label colour. By default, it is blue.}
+\item{col2}{The input parameter for specifying the column label colour. By default, it is red.}
 \item{...}{Further arguments passed to or from other methods.}
 }
 \details{
@@ -81,13 +85,13 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 %}
 \examples{
 data(happy)
-ris.ca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "CA3") 
-plot(ris.ca3)
-ris.nsca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "NSCA3") 
-plot(ris.nsca3)
-ris.oca3<-CA3variants(happy, ca3type = "OCA3",norder=3) 
+ris.ca3<-CA3variants(happy, p = 2, q = 2, r = 2, ca3type = "CA3") 
+plot(ris.ca3,invproj=TRUE, col1="red", col2="green")
+ris.nsca3<-CA3variants(happy,  ca3type = "NSCA3") 
+plot(ris.nsca3, plot3d = TRUE)
+ris.oca3<-CA3variants(happy, p = 2, q = 2, r = 2, ca3type = "OCA3", norder = 3) 
 plot(ris.oca3)
-ris.onsca3<-CA3variants(happy, ca3type = "ONSCA3",norder=3) 
+ris.onsca3<-CA3variants(happy, p = 2, q = 2, r = 2, ca3type = "ONSCA3", norder = 3) 
 plot(ris.onsca3)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

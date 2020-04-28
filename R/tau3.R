@@ -53,10 +53,12 @@ function(f3, digits = 3){
     zz <- c(itauij, itauik, ikhjk, ikhin3,itau3)   
     zz2<-c(Cij,Cik,Cjk,Cijk,CM)
     zz3<-c(dij,dik,djk,dres,dtot)
-    z <- rbind(x, zz,y,zz2,zz3)
+ pvalue= 1 - pchisq(zz2, zz3)
+      z <- rbind(x, zz,y,zz2,zz3,pvalue)
     nomr <- c("Numerator values of partial terms", "Indices", "% of Inertia", 
-              "C-Statistics","degree of freedom")
+              "C-Statistics","degree of freedom","p-value")
     dimnames(z) <- list(nomr, nom)
     z <- round(z, digits = digits)
     list(z = z, CM = CM)
 }
+
