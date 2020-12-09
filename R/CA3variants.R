@@ -1,73 +1,129 @@
 CA3variants<-
-function(Xtable, p = dim(Xtable)[[1]], q = dim(Xtable)[[2]], 
-                        r = dim(Xtable)[[3]], ca3type = "CA3", test = 10^-6, norder=3){ 
-        X <- as.array(Xtable)
+function(Xdata, dims=c(p,q,r), ca3type = "CA3", test = 10^-6, resp="row", norder=3){ 
+#------------------------------------------
+#Xdata can be an array or raw data
+#--------------------------------------
+if ( missing(dims)) {stop("'dims' must be given without default\n number of dimension for rows, columns and tubes must be given\n 
+for example: dims=c(p=2,q=2,r=2). For guidance, use the 'tunelocal' function\n")
+}
+if (is.array(Xdata)==FALSE){
+  #Xdata=dget("Xdata.txt")
+Xdata1<-Xdata  
+#attach(Xdata1)
+  nam<-names(Xdata1)
+ndims<-dim(Xdata1)[[2]]
+if (ndims<3) {stop("number of vars for output must be at least 3\n\n")}
+Xdata2=table(Xdata1[[1]],Xdata1[[2]],Xdata1[[3]])
+  if(is.numeric(Xdata1)==TRUE){  
+dimnames(Xdata2)=list(paste(nam[[1]],1:max(Xdata[[1]]),sep=""),paste(nam[[2]],1:max(Xdata[[2]]),sep=""),paste(nam[[3]],1:max(Xdata[[3]]),sep=""))
+}  
+#paste("This is your given array\n\n")
+  Xdata<-Xdata2
+#print(Xdata)
+  }
+if (is.array(Xdata)==FALSE) {stop("number of variables for three-way analysis must be at least 3\n\n")}
+
+# READ DATA FILE
+#Xdata <- read.table(file = datafile, header=header)
+#if (header==FALSE) { 
+#for (i in 1:dim(Xdata)[1]) rownames(Xdata)[i] <- paste("r",i,sep="")
+#for (i in 1:dim(Xdata)[2]) colnames(Xdata)[i] <- paste("c",i,sep="")
+#}
+X <- as.array(Xdata)
+
+if (resp=="row"){
+p<-dims[[1]]
+q<-dims[[2]]
+r<-dims[[3]]
+}
+  #-------------------------------------------------------------------------------
+if ((resp=="col")||(resp=="column")){
+X<-aperm(X,c(2,1,3))
+p<-dims[[2]]
+q<-dims[[1]]
+r<-dims[[3]]}
+if (resp=="tube"){
+X<-aperm(X,c(3,2,1))
+p<-dims[[3]]
+q<-dims[[2]]
+r<-dims[[1]]}
+#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
     ni <- dim(X)[1]
     nj <- dim(X)[2]
     nk <-dim(X)[3]
 labelgjk <- NULL 
+labelgik <- NULL 
+labelgij <- NULL 
     nomi <- dimnames(X)[[1]]
     nomj <- dimnames(X)[[2]]
     nomk <- dimnames(X)[[3]]
     n <- sum(X)
-    maxaxes <- min(ni - 1, nj - 1, nk - 1)
+pii <- apply(X/sum(X), 1, sum)
     pj <- apply(X/sum(X), 2, sum)
     pk <- apply(X/sum(X), 3, sum)
-    S <- switch(ca3type, "CA3" = ca3basic(X, p, q, r),  "NSCA3" = 
-                    nsca3basic(X, p, q, r),"OCA3" = oca3basic(X, p, q, r,norder=norder),
-                "ONSCA3" = onsca3basic(X, p, q, r,norder=norder))
+    S <- switch(ca3type, "CA3" = ca3basic(X, p=p, q=q, r=r),  "NSCA3" = 
+                    nsca3basic(X, p=p, q=q, r=r),"OCA3" = oca3basic(X, p=p, q=q, r=r,norder=norder),
+                "ONSCA3" = onsca3basic(X, p=p, q=q, r=r,norder=norder))
      ######################################################################################
     #                                                                                                                                                                                                          #
     # Defines the analysis to be performed  for nominal variables- CA3 or NSCA3 -for ordinal variables OCA3 -ONSCA3    #
     #                                                                                                                                                                                                         #
     #####################################################################################
         if(ca3type == "CA3"){
-    #    S <- ca3basic(X, p, q, r)
-        pi <- apply(X/sum(X), 1, sum)
-        index3 <- chi3(X)$z
-firstdim<-1
-lastdim<-2
+           pi <- apply(X/sum(X), 1, sum)
+index3res<-chi3(X)        
+index3 <- index3res$z
+#indexij<-NULL
+#indexik<-NULL
+#indexjk<-NULL
     } 
         if(ca3type == "OCA3"){
-      #  S <- oca3basic(X, p, q, r)
-        pi <- apply(X/sum(X), 1, sum)
-chi2res<-chi3ordered(X)
-#print(chi2res)
-        index3 <- chi3ordered(X)$zijk
-firstdim<-2
-lastdim<-3
-#browser()   
+           pi <- apply(X/sum(X), 1, sum)
+index3res<-chi3ordered(X)
+        index3 <- index3res$zijk
+#indexij<-chi3ordered(X)$zij
+#indexik<-chi3ordered(X)$zik
+#indexjk<-chi3ordered(X)$zjk
+
  } 
 if(ca3type == "NSCA3") {
-     #   S <- nsca3basic(X, p, q, r)
+index3res<-tau3(X)
         index3 <- tau3(X)$z
         pi <- rep(1, ni)
-firstdim<-1
-lastdim<-2
+#indexij<-NULL
+#indexik<-NULL
+#indexjk<-NULL
     }
     if(ca3type == "ONSCA3"){
       #  S <- oca3basic(X, p, q, r)
       pi <- rep(1, ni)
       #tauMres<-tau3ordered(X)
       #print(chi2res)
-      index3 <- tau3ordered(X)$zijk
-firstdim<-2
-lastdim<-3
-      #browser()   
+index3res<-tau3ordered(X)
+      index3 <- index3res$zijk
+#indexij<-tau3ordered(X)$zij
+#indexik<-tau3ordered(X)$zik
+#indexjk<-tau3ordered(X)$zjk
     } 
+#---------------------two-way margin tables
+pij<-index3res$pij
+pik<-index3res$pik
+pjk<-index3res$pjk
+
 ####################################################################
     #                                                                  #
-    # Calculation of coordinates  for CA3 and NSCA3                    #
+    # Calculation of coordinates  for CA3  NSCA3   and all oordered variants                 #
     #                                                                  #
     ####################################################################
-# if((ca3type == "CA3")|(ca3type == "NSCA3")) {
+
+#----------------------------------------------------------------------for biptype row and column-tube
    fiStandard <-  S$a
-    #fi <- diag(sqrt(pi)) %*% S$a     
-    # Standard row coordinates 
-#    fi<- diag(1/sqrt(pi))  %*% S$a %*% flatten(S$g) 
+        # Standard row coordinates 
+ncore<-dim(S$g)
 fi <- S$a %*% flatten(S$g)
     # Principal row coordinates
-#    gjkStandard <- Kron(diag(sqrt(pj)) %*%S$b,diag(sqrt(pk)) %*% S$cc ) 
 gjkStandard <- Kron(S$b,S$cc ) 
     gjk <- Kron(S$b,S$cc) %*% t(flatten(S$g)) 
         # Calculating the column-tube principal coordinates
@@ -75,9 +131,9 @@ labelfi<-nomi
  for (i in 1:nk){
         labelgjk <- c(labelgjk, paste(nomj, nomk[i], sep = ""))
     }
- fidim<-p
-fiCdim<-q*r      
-#}#end if ca3type
+ fidim<-ncore[1]
+#fiCdim<-q*r
+fiCdim<-ncore[2]*ncore[3]      
     nr <- dim(gjk)[[1]]
     nc <- dim(gjk)[[2]]
   nc2 <- dim(gjkStandard)[[2]]
@@ -87,37 +143,118 @@ productfigjk <- fiStandard %*% t(gjk)
   dimnames(gjkStandard) <- list(labelgjk, paste("ax", 1:nc2, sep = ""))
     dimnames(productfigjk) <- list(labelfi, labelgjk)
     dimnames(fi) <- list(labelfi, paste("ax", 1:fiCdim, sep = ""))
-    dimnames(fiStandard) <- list(labelfi, paste("ax", 1:fidim, sep = ""))
+ dimnames(fiStandard) <- list(labelfi, paste("ax", 1:dim(S$a)[[2]], sep = ""))
+    ####################################################################
+    #                                                                  #
+    # Calculation scaleplot=gamma values                                       #
+    #                                                                  #
+    ####################################################################
+V1<-sum(diag(t(fiStandard)%*%fiStandard)) #for column-tube biplot
+V2<-sum(diag(t(gjk)%*%gjk))
+gammajk<-1/((nj*nk/ni)*V1/V2)^{1/4}
+#------------------------------------------------------
+VV1<-sum(diag(t(gjkStandard)%*%gjkStandard)) #for row biplot
+VV2<-sum(diag(t(fi)%*%fi))
+gammai<-1/((ni/nj*nk)*VV1/VV2)^{1/4}
+#--------------------------------------
+#---------------------------------------------------------------------------------------biptype =col and row-tube
+fjStandard <-  S$b # Standard col coordinates 
+fj <- S$b %*% flatten(aperm(S$g,c(2,1,3)))    # Principal col coordinates JxPR
+gikStandard <- Kron(S$a,S$cc ) # interactive coordinates IKxPR
+    gik <- Kron(S$a,S$cc) %*% t(flatten(aperm(S$g,c(2,1,3)))) # interactive principal coordinates
+        # Calculating the labels for the column-tube principal coordinates
+labelfj<-nomj
+ for (i in 1:nk){
+        labelgik <- c(labelgik, paste(nomi, nomk[i], sep = ""))
+    }
+fjdim<-ncore[2]
+#fjCdim<-p*r      
+ fjCdim<-ncore[1]*ncore[3]
+   nr <- dim(gik)[[1]]
+    nc <- dim(gik)[[2]]
+  nc2 <- dim(gikStandard)[[2]]
+productfjgik <- fjStandard %*% t(gik)
+    productfjgik <- round(productfjgik, digits = 2) # Inner product 
+    dimnames(gik) <- list(labelgik, paste("ax", 1:nc, sep = ""))
+  dimnames(gikStandard) <- list(labelgik, paste("ax", 1:nc2, sep = ""))
+    dimnames(productfjgik) <- list(labelfj, labelgik)
+    dimnames(fj) <- list(labelfj, paste("ax", 1:fjCdim, sep = ""))
+ dimnames(fjStandard) <- list(labelfj, paste("ax", 1:dim(fjStandard)[[2]], sep = ""))
+V1<-sum(diag(t(fjStandard)%*%fjStandard)) #for row-tube biplot
+V2<-sum(diag(t(gik)%*%gik))
+gammaik<-1/((ni*nk/nj)*V1/V2)^{1/4}
+#------------------------------------------------------
+VV1<-sum(diag(t(gikStandard)%*%gikStandard)) #for col biplot
+VV2<-sum(diag(t(fj)%*%fj))
+gammaj<-1/((ni/nj*nk)*VV1/VV2)^{1/4}
+#--------------------------------------
+#---------------------------------------------------------------------------------------biptype tube and row-col
+fkStandard <-  S$cc # Standard col coordinates 
+fk <- S$cc %*% flatten(aperm(S$g,c(3,1,2)))    # Principal col coordinates JxPR
+gijStandard <- Kron(S$a,S$b ) # interactive coordinates IKxPR
+    gij <- Kron(S$a,S$b) %*% t(flatten(aperm(S$g,c(3,1,2)))) # interactive principal coordinates
+
+        # Calculating the labels for the column-tube principal coordinates
+labelfk<-nomk
+ for (i in 1:nj){
+        labelgij <- c(labelgij, paste(nomi, nomj[i], sep = ""))
+    }
+
+fkdim<-ncore[3]
+#fkCdim<-p*q      
+fkCdim<-ncore[1]*ncore[2]
+    nr <- dim(gij)[[1]]
+    nc <- dim(gij)[[2]]
+  nc2 <- dim(gijStandard)[[2]]
+productfkgij <- fkStandard %*% t(gij)
+    productfkgij <- round(productfkgij, digits = 2) # Inner product 
+    dimnames(gij) <- list(labelgij, paste("ax", 1:nc, sep = ""))
+  dimnames(gijStandard) <- list(labelgij, paste("ax", 1:nc2, sep = ""))
+    dimnames(productfkgij) <- list(labelfk, labelgij)
+    dimnames(fk) <- list(labelfk, paste("ax", 1:fkCdim, sep = ""))
+ dimnames(fkStandard) <- list(labelfk, paste("ax", 1:dim(fkStandard)[[2]], sep = ""))
+V1<-sum(diag(t(fkStandard)%*%fkStandard)) #for row-tube biplot
+V2<-sum(diag(t(gij)%*%gij))
+gammaij<-1/((ni*nj/nk)*V1/V2)^{1/4}
+#------------------------------------------------------
+VV1<-sum(diag(t(gijStandard)%*%gijStandard)) #for col biplot
+VV2<-sum(diag(t(fk)%*%fk))
+gammak<-1/((nk/nj*ni)*VV1/VV2)^{1/4}
+#--------------------------------------
     ####################################################################
     #                                                                  #
     # Calculation inertia values                                       #
     #                                                                  #
     ####################################################################
     inertiaorig <- sum(S$xs^2) #total inertia of the table (I,J,K) equal to the related index 
-inertiatot<-sum(S$g^2) #inertia reconstructed when p,q and r are different from I, J and K dimensions
-inertiapcsum <- (sum(S$g^2)/inertiaorig*100)  
-  inertiapc <- (S$g^2/inertiaorig*100)
+    inertiatot<-sum(S$g^2) #inertia reconstructed when p,q and r are different from I, J and K dimensions
+    inertiapcsum <- (sum(S$g^2)/inertiaorig*100)  
+    inertiapc <- (S$g^2/inertiaorig*100)
     inertiaRSS <- (inertiaorig-inertiatot)
- inertiacoltub <- apply(inertiapc,1,sum)  
-inertiarow <- c(apply(inertiapc,c(2,3),sum)) 
-names(inertiarow)<-paste("ax", 1:fiCdim, sep = "")
- #   ca3corporateresults<-new("ca3corporateresults", DataMatrix = X, xs = 
- #                                S$xs, xhat = S$xhat, nxhat2 = S$nxhat2, prp = S$prp, a=S$a,b=S$b,cc=S$cc,
-#fi = fi, fiStandard= fiStandard, gjk = gjk,gjkStandard=gjkStandard, rows = ni, cols = nj, tubes = nk, flabels = 
- #                                labelfi, glabels = labelgjk, maxaxes = maxaxes, 
- #                            inertia = inertia,inertiaRSS = inertiaRSS, inertiapc0 = inertiapc0, inertiacoltub = inertiapc1coltub,inertiarow=inertiapc2row, 
- #                            iproduct = productfigjk, g = S$g, index3 = index3, ca3type = 
- #                                ca3type, iteration = S$iteration)
-   #   print(ca3corporateresults)
-   # plot(ca3corporateresults, cex = cex, firstaxis = firstaxis, lastaxis = 
-   #         lastaxis, plottype = plottype, prop = prop,arrow=arrow)
-ca3corporateresults<-list(DataMatrix = X, xs =S$xs, xhat = S$xhat, nxhat2 = S$nxhat2, prp = S$prp, a=S$a,b=S$b,cc=S$cc,
-fi = fi, fiStandard= fiStandard, gjk = gjk,gjkStandard=gjkStandard, rows = ni, cols = nj, tubes = nk, flabels = 
-                                 labelfi, glabels = labelgjk, maxaxes = maxaxes, 
-                             inertiaorig = inertiaorig,inertiatot=inertiatot, inertiaRSS=inertiaRSS, inertiapc=inertiapc,
-inertiapcsum = inertiapcsum, inertiacoltub = inertiacoltub,inertiarow=inertiarow, 
-                             iproduct = productfigjk, g = S$g, index3 = index3, ca3type = 
-                                 ca3type, iteration = S$iteration,firstaxis=firstdim,lastaxis=lastdim)
+#----------------------------------------------------------for row and col-tube biplot
+    inertiacoltub <- apply(inertiapc,1,sum)  
+    inertiarow <- c(apply(inertiapc,c(2,3),sum)) 
+    names(inertiarow)<-paste("ax", 1:fiCdim, sep = "")
+#----------------------------------------------------------for col and row-tube biplot
+    inertiarowtub <- apply(inertiapc,2,sum)  
+    inertiacol <- c(apply(inertiapc,c(1,3),sum)) 
+    names(inertiacol)<-paste("ax", 1:fjCdim, sep = "")
+#----------------------------------------------------------for tube and row-col biplot
+    inertiarowcol <- apply(inertiapc,3,sum)  
+    inertiatube <- c(apply(inertiapc,c(1,2),sum)) 
+    names(inertiatube)<-paste("ax", 1:fkCdim, sep = "")
+#-----------------------------------------------------------------------------------------------------------------------
+
+ca3corporateresults<-list(Data = X, ca3type = ca3type, rows = ni, cols = nj, tubes = nk, labelfi =labelfi, labelgjk = labelgjk,labelfj =labelfj, labelgik = labelgik, labelfk =labelfk, labelgij = labelgij, iteration = S$iteration, pi=pii, pj=pj, pk=pk, pij=pij, pik=pik, pjk=pjk,
+prp = S$prp, a=S$a,b=S$b,cc=S$cc,
+fi = fi, fiStandard= fiStandard, gjk = gjk,gjkStandard=gjkStandard, fj = fj, fjStandard= fjStandard, gik = gik,gikStandard=gikStandard, 
+fk = fk, fkStandard= fkStandard, gij = gij,gijStandard=gijStandard, 
+inertiaorig = inertiaorig,inertiatot=inertiatot, inertiaRSS=inertiaRSS, inertiapc=inertiapc,
+inertiapcsum = inertiapcsum, inertiacoltub = inertiacoltub,inertiarow=inertiarow, inertiarowtub = inertiarowtub,inertiacol=inertiacol,
+inertiarowcol = inertiarowcol,inertiatube=inertiatube, iproductijk = productfigjk,iproductjik = productfjgik,iproductkij = productfkgij, 
+g = S$g, index3res = index3res, index3=index3, 
+gammai=gammai,gammajk=gammajk,
+gammaj=gammaj,gammaik=gammaik,gammak=gammak,gammaij=gammaij)
  
 class(ca3corporateresults)<-"CA3variants"
 invisible(return(ca3corporateresults))

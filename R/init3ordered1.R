@@ -8,7 +8,7 @@ init3ordered1<-function(x, p, q, r, x0)
 #    a      is   Ixp
 #    b      is   Jxq
 #    c      is   Kxr
-# polinomi ortogonali calcolati solo sul terzo modo
+# polinomi ortogonali calcolati solo sul secondo modo
 #-------------------------------------------------
 	nom <- dimnames(x)
 	n <- dim(x)
@@ -29,18 +29,16 @@ pj <- apply(y/sum(y), 1, sum)
 Bpoly <- emerson.poly(mj, pj)	# Emerson orthogonal polynomials
 	Bpoly <- Bpoly[, - c(1)  ]	#Bpoly <- Bpoly[1:p,  ]
 	b <- diag(sqrt(pj)) %*% Bpoly[, 1:q]	#polinomio con pesi Di
-	cat("Checking the orthonormality of polynomials b:\n")
-	print(t(b) %*% (b))	
+	#cat("Checking the orthonormality of polynomials b:\n")
+	#print(t(b) %*% (b))	
 #-------------------------------------------------------------
-# only the third variable is ordinal
+# only the second variable is ordinal
 	dimnames(y) <- NULL
     y <- aperm(x0, c(3, 1, 2))
     dim(y) <- c(n[3], n[1] * n[2])
     pk <- apply(y/sum(y), 1, sum)
     r <- min(r, n[3])
-  #r <- min(r, n[2], n[1] * n[3])
-	cc <- svd(y)$u[, 1:r]
-	
+  	cc <- svd(y)$u[, 1:r]
 #####################################################################################
 	dimnames(x) <- nom
 	list(a = as.matrix(a), b = as.matrix(b), cc = as.matrix(cc), g = NULL, x = x,pii=pii,pj=pj,pk=pk)

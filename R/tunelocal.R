@@ -1,4 +1,4 @@
-tunelocal<-function (Xdata, ca3type = "CA3", norder = 3, digits = 3, boots = FALSE, 
+tunelocal<-function (Xdata, ca3type = "CA3", resp="row", norder = 3, digits = 3, boots = FALSE, 
           nboots = 0, boottype= "bootpsimple", resamptype = 1) 
 {
 #when boot = T it does bootstrap sampling. There are three kinds of possible bootstrap 
@@ -16,7 +16,23 @@ tunelocal<-function (Xdata, ca3type = "CA3", norder = 3, digits = 3, boots = FAL
  # boottype="bootpsimple" #bootnp bootpsimple bootpstrat
  # nboots<-2
  # Xdata<-happy
-  #----------------------------------
+#----------------------------------
+if (is.array(Xdata)==FALSE){
+  #Xtable=dget("Xdata.txt")
+Xdata1<-Xdata  
+  nam<-names(Xdata1)
+ndims<-dim(Xdata1)[[2]]
+if (ndims<3) {stop("number of variables for output must be at least 3\n\n")}
+Xdata2=table(Xdata1[[1]],Xdata1[[2]],Xdata1[[3]])
+  if(is.numeric(Xdata1)==TRUE){  
+dimnames(Xdata2)=list(paste(nam[[1]],1:max(Xdata[[1]]),sep=""),paste(nam[[2]],1:max(Xdata[[2]]),sep=""),paste(nam[[3]],1:max(Xdata[[3]]),sep=""))
+}  
+#paste("This is your given array\n\n")
+  Xdata<-Xdata2
+#print(Xdata)
+  }
+
+#-----
     rows <- dim(Xdata)[[1]]
   cols <- dim(Xdata)[[2]]
   tubs <- dim(Xdata)[[3]]
@@ -26,44 +42,46 @@ tunelocal<-function (Xdata, ca3type = "CA3", norder = 3, digits = 3, boots = FAL
   I <- rows
   J <- cols
   K <- tubs
-  XG <- list()
+  XG <- Xrand<-list()
   output1 <- output2 <- output3 <- output4 <- output5 <- output6 <- NULL
-  F1 <- list(Fijk = Xdata)
-  XG[[1]] <- F1$Fijk
-  nran <- sum(F1$Fijk)
+    nran <- sum(Xdata)
   risCArss <- RSScrit <- list()
   risCAgof <- CAgof <- list()
   risCAchi2 <- list()
   risCAfp <- risCAdf <- dfmodel <- CAinertia <- list()
   fpmodel <- dimmodel <- list()
-  
-    if (boots == T) {
-      Xrand <- switch(boottype, "bootnp" = threewayboot(Xdata,nboots),  "bootpsimple" = 
-                  simulabootsimple(Xdata, nboots, resamptype = resamptype),"bootpstrat" =simulabootstrat(Xdata, nboots, resamptype = resamptype) )
-    
-    #Xrand <- simulaboot(Xdata, nboots, resamptype = resamptype)
-    #Xrand<-threewayboot(Zdata,rows,cols,tubs,nboots)
-    #Xrand<-simulaboot(Xdata,nboots)
-    #Xrand<-simulabootsimple(Xdata,nboots)
-        for (b in 1:nboots) {
-      XG[[b + 1]] <- Xrand[[b]]
-      dimnames(XG[[b + 1]]) <- list(paste("row", 1:rows, 
-                                          sep = ""), paste("col", 1:cols, sep = ""), paste("tub", 
-                                                                                           1:tubs, sep = ""))
+      if (boots == T) {
+      Xrand <- switch(boottype, "bootnp" = threewayboot(Xdata,nboots=nboots),  "bootpsimple" = 
+                  simulabootsimple(Xdata, nboots=nboots, resamptype = resamptype),"bootpstrat" =simulabootstrat(Xdata, nboots=nboots, resamptype = resamptype) )
+    XG[[1]]<-Xdata
+           for (b in 1:nboots) {
+#XG[[b ]]<-array(unlist(Xrand[[b]]),c(rows,cols,tubs))
+XG[[b+1]]<-Xrand[[b]]           
+ dimnames(XG[[b ]]) <- dimnames(Xdata)
+
     }
   }
+
+else{
+XG<-list(Xdata)
+}
+
+#print(XG)
+#browser()
+#stop()
   nsets <- nboots + 1
-  for (b in (1:nsets)) {
+  for (b in 1:nsets) {
     ng <- 0
     for (i in 1:rows) {
       for (j in 1:cols) {
         for (k in 1:tubs) {
           ng <- ng + 1
-          res <- CA3variants(XG[[b]], p = i, q = j, r = k, 
-                             ca3type = ca3type, norder = norder)
+          res <- CA3variants(XG[[b]], dims=c(p= i, q= j,  r =k), 
+                             ca3type = ca3type, resp=resp, norder = norder)
+
          # risCArss[[ng]] <- res$inertiaRSS
-          risCAgof[[ng]] <- sum(res$inertiapc)
-          risCAchi2[[ng]] <- res$nxhat2
+          risCAgof[[ng]] <- sum(res$inertiapc) #percentage of explained inertia
+          risCAchi2[[ng]] <- res$inertiatot
           risCAdf[[ng]] <- ((i - 1) * (j - 1) * (k - 
                                                    1) + (i - 1) * (j - 1) + (i - 1) * (k - 1) + 
                               (j - 1) * (k - 1))
@@ -135,13 +153,12 @@ tunelocal<-function (Xdata, ca3type = "CA3", norder = 3, digits = 3, boots = FAL
    # output4 <- CHull(RSSord2, bound = "lower", PercentageFit = 0.001)
    # plot(output4, type = "b")
    # title(sub="Bootstrap Data-RSS criterion")
-    output6 <- CHull(GOFord2, bound = "upper", PercentageFit = 0.001)
-    plot(output6, type = "b")
-    title(sub="Bootstrap Data-GoF criterion")
+   # output6 <- CHull(GOFord2, bound = "upper", PercentageFit = 0.001)
+   # plot(output6, type = "b")
+   # title(sub="Bootstrap Data-GoF criterion")
   }
   #RSSord <- round(RSSord, digits = 3)
   CHIord <- round(CHIord, digits = 3)
   GOFord <- round(CHIord, digits = 3)
-  return(list(XG = XG, output1 = output1, output2 = output2, 
-             output5 = output5,  output6 = output6))
+  return(list(XG = XG, output1 = output1, output2 = output2))
 }

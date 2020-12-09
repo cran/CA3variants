@@ -1,50 +1,115 @@
-print.CA3variants <-function(x, digits=3,...) {
-    cat("Number of iteration steps \n")
+print.CA3variants <-function(x, printall=FALSE, digits=3,...) {
+if (printall==FALSE){   
+#--------------------------------------------
+cat("Percentage contributions of components to the total inertia for column-tube biplots\n\n")
+    print(round(x$inertiacoltub,digits=digits))
+cat("Percentage contributions of components to the total inertia for row biplots\n\n")
+    print(round(x$inertiarow,digits=digits))
+#---------------------------------------------------
+cat("Percentage contributions of  components to the total inertia for row-tube biplots\n\n")
+    print(round(x$inertiarowtub,digits=digits))
+cat("Percentage contributions of  components to the total inertia for column biplots\n\n")
+    print(round(x$inertiacol,digits=digits))
+#---------------------------------------------------
+cat("Percentage contributions of components to the total inertia for row-column biplots\n\n")
+    print(round(x$inertiarowcol,digits=digits))
+cat("Percentage contributions of components to the total inertia for tube biplots\n\n")
+    print(round(x$inertiatube,digits=digits))
+#--------------------------------------
+if ((x$ca3type=="OCA3")||(x$ca3type=="ONSCA3")){
+cat("\n Index partionings\n\n")
+print(round(x$index3res$z,digits=digits))    
+print(round(x$index3,digits=digits))    
+print(round(x$index3res$zij,digits=digits))
+    print(round(x$index3res$zik,digits=digits))
+    print(round(x$index3res$zjk,digits=digits))
+      cat("\n\n")
+}
+if ((x$ca3type=="CA3")||(x$ca3type=="NSCA3")){
+cat("\n Index partionings\n\n")
+    print(round(x$index3,digits=digits))
+    cat("\n\n")}
+   
+}#end printall
+if (printall==TRUE){   
+ cat("Number of iteration steps \n")
     print(x$iteration)
     cat("\n    RESULTS for 3-way Correspondence Analysis\n")
-        if ((x$ca3type=="CA3")|(x$ca3type=="OCA3")){
-        cat("Three-way Pearson standardised residuals \n")
-        print(round(x$xs, digits = 2))
-    } 
-else {
-        cat("Three-way (weighted) centered column profile table \n")
-        print(round(x$xs, digits = 2))
-    }
+      #  if ((x$ca3type=="CA3")|(x$ca3type=="OCA3")){
+      #  cat("Three-way Pearson standardised residuals \n")
+      #  print(round(x$xs, digits = 2))
+    #} 
+#else {
+ #       cat("Three-way (weighted) centered column profile table \n")
+  #      print(round(x$xs, digits = 2))
+   # }
 cat("\n Row marginals\n\n")
-     print(round(apply(x$DataMatrix/sum(x$DataMatrix), 1, sum), digits = digits))
+     print(round(x$pi, digits = digits))
 cat("\n Column marginals\n\n")
-     print(round(apply(x$DataMatrix/sum(x$DataMatrix), 2, sum), digits = digits))
+     print(round(x$pj, digits = digits))
 cat("\n Tube marginals\n\n")
-     print(round(apply(x$DataMatrix/sum(x$DataMatrix), 3, sum), digits = digits))
-    cat("Reconstruction of Data array by components and core array \n")
-    print(round(x$xhat, digits = digits))
+     print(round(x$pk, digits = digits))
+cat("\n Row-Column marginals\n\n")
+     print(round(x$pij, digits = digits))
+cat("\n Column-Tube marginals\n\n")
+     print(round(x$pjk, digits = digits))
+cat("\n Row-Tube marginals\n\n")
+     print(round(x$pik, digits = digits))
     cat("Explained inertia (reduced dimensions)", x$inertiatot, "\n\n")
     cat("Total inertia (complete dimensions)", x$inertiaorig, "\n\n")
 #    cat("Percentage of explained inertia on total inertia  \n\n")
- cat("The percentage contribution of the three components to the total variation\n\n")
-   print(round(x$inertiapcsum,digits=digits))
+# cat("Percentage contribution of components to the total variation\n\n")
+#   print(round(x$inertiapcsum,digits=digits))
 #   print(round(x$inertiapc,digits=digits))
-cat("The vector of the percentage contributions of the interactively coded colum-tube components to the total inertia, 
-useful for making interactively coded biplots\n\n")
-    print(round(x$inertiacoltub,digits=digits))
-cat("The vector of the percentage contributions of the row components to the total inertia, 
-useful for making response biplots\n\n")
-    print(round(x$inertiarow,digits=digits))
     #cat("Proportion of explained inertia (when reducing dimensions)\n\n")
     #print(x$prp)
     cat("\n Rows in principal coordinates\n\n")
-    print(round(x$fi), digits = digits)
+    print(round(x$fi, digits = digits))
     cat("\n Rows in standard coordinates\n\n")
     print(round(x$fiStandard, digits = digits))
     cat("\n Column-tubes in principal coordinates\n\n")
     print(round(x$gjk, digits = digits))
  cat("\n Column-tubes in standard coordinates\n\n")
     print(round(x$gjkStandard, digits = digits))
-    cat("\n Coordinate Inner Product\n\n")
-    print(round(x$iproduct, digits = digits))
+    cat("\n Inner Product of coordinates (row x interactive)\n\n")
+    print(round(x$iproductijk, digits = digits))
+    cat("\n Inner Product of coordinates (col x interactive)\n\n")
+    print(round(x$iproductjik, digits = digits))
+    cat("\n Inner Product of coordinates (tube x interactive)\n\n")
+    print(round(x$iproductkij, digits = digits))
     cat("Core array i.e. Generalised singular values  \n\n")
     print(round(x$g, digits = digits))
-    cat("\n Index partionings\n\n")
+#--------------------------------------------
+cat("Percentage contributions of components to the total inertia for column-tube biplots\n\n")
+    print(round(x$inertiacoltub,digits=digits))
+cat("Percentage contributions of components to the total inertia for row biplots\n\n")
+    print(round(x$inertiarow,digits=digits))
+#---------------------------------------------------
+cat("Percentage contributions of  components to the total inertia for row-tube biplots\n\n")
+    print(round(x$inertiarowtub,digits=digits))
+cat("Percentage contributions of  components to the total inertia for column biplots\n\n")
+    print(round(x$inertiacol,digits=digits))
+#---------------------------------------------------
+cat("Percentage contributions of components to the total inertia for row-column biplots\n\n")
+    print(round(x$inertiarowcol,digits=digits))
+cat("Percentage contributions of components to the total inertia for tube biplots\n\n")
+    print(round(x$inertiatube,digits=digits))
+#--------------------------------------
+#--------------------------------------
+    if ((x$ca3type=="OCA3")||(x$ca3type=="ONSCA3")){
+cat("\n Index partionings\n\n")
+print(round(x$index3res$z,digits=digits))    
+print(round(x$index3,digits=digits))    
+print(round(x$index3res$zij,digits=digits))
+    print(round(x$index3res$zik,digits=digits))
+    print(round(x$index3res$zjk,digits=digits))
+      cat("\n\n")
+}
+if ((x$ca3type=="CA3")||(x$ca3type=="NSCA3")){
+cat("\n Index partionings\n\n")
     print(round(x$index3,digits=digits))
+    cat("\n\n")}
+
     cat("\n\n")
+}
 }

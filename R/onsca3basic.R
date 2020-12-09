@@ -34,7 +34,7 @@ nr <- paste("r", 1:ncore[3], sep = "")
 dimnames(res$g) <- list(np, nq, nr)
 res$xs <- xs  #con standtab
 #res$xs<-xsg  #con standtabnew
-cat("Total Variance, Estimated Variance, Proportions\n")
+#cat("Total Variance, Estimated Variance, Proportions\n")
       xhat <- reconst3(res)
 nx2 <- sum(xs^2)
 res$tot <- nx2

@@ -213,11 +213,12 @@ dimnames(zijk)<-list(c(nomi, "chi2int-index",nomj,"chi2int-index",nomk,"chi2int-
    df<- c(dij, dik, djk, dres, dtot)
 pvalue= 1 - pchisq(zznew, df)
 perc<-zznew/chi2tot*100
-    znew <- rbind(zznew, perc, df, pvalue)
+x2<-zznew/df
+    znew <- rbind(zznew, perc, df, pvalue,x2)
     nomr <- c("partial terms", "%inertia",
-  "degree of freedom","p-value")
+  "df","p-value","X2/df")
     dimnames(znew) <- list(nomr, nom)
 znew<-round(znew,digits=digits)
-    return(list(z=znew,zij=zij,zik=zik,zjk=zjk,zijk=zijk))
+    return(list(z=znew,zij=zij,zik=zik,zjk=zjk,zijk=zijk,pij=pij,pik=pik,pjk=pjk))
 }
 

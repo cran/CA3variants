@@ -1,37 +1,48 @@
 \name{tunelocal}
 \alias{tunelocal}
 \title{
-Dimension selection for three-dimensional correspondence biplot.
+Dimension selection for three-dimensional correspondence biplot using convex hull.
 }
 \description{
 This function allows to select the optimal dimension number 
 for correspondence biplot, given the set of possible dimension combination
 of the original data. 
-For exploring, it is possible to check the optimal dimension of
+For exploring, it is also possible to check the optimal model dimension by using
 boostrap samples which have the same marginal proportions and the total number
 of the original table. When the input parameter \code{boots = T}, it does bootstrap sampling. 
 There are three kinds of possible bootstrap sampling. 
 When \code{boottype = "bootnp"} it performs a non parametric bootstrap sampling.
-When \code{boottype = "bootpsimple"} it performs a parametric (for \code{resamptype=1} is
-multinomial or for \code{resamptype=2} is poisson) simple bootstrap sampling. 
+When \code{boottype = "bootpsimple"} it performs a parametric simple bootstrap sampling.
 When \code{boottype = "bootpstrat"}, it performs a parametric stratified bootstrap sampling.  
+In particular in case of parametric bootstrap types,
+when \code{resamptype=1} it considers a multinomial distribution, and when \code{resamptype = 2} 
+it  considers a poisson distribution. 
 }
 \usage{
-tunelocal(Xdata, ca3type = "CA3", norder = 3, digits = 3, boots = FALSE, 
+tunelocal(Xdata, ca3type = "CA3", resp = "row", norder = 3, digits = 3, boots = FALSE, 
           nboots = 0, boottype= "bootpsimple", resamptype = 1) 
 }
 \arguments{
-  \item{Xdata}{
-The three-way data array. It must be an \code{R} object array.
-When non-symmetrical analysis for one response variable is performed, the response mode is the row variable.
+\item{Xdata}{
+The three-way data. It can be a \code{R} object array or raw data (n individuals by three categorical variables, for an example,
+see \code{museum} data).
+When a three-way non-symmetrical variant is performed, by default, the response variable is the row variable when an array is given, or 
+the first of three columns when a raw data set is given. 
+For changing, consider the parameter \code{resp = "col"} or  \code{resp = "tube"}.
 }
-  \item{ca3type}{
+ \item{ca3type}{
 The specification of the analysis to be performed. 
 If \code{ca3type = "CA3"}, then a three-way (symmetrical) correspondence analysis will be performed 
 (default analysis). 
 If \code{ca3type = "NSCA3"}, then three-way non-symmetrical correspondence analysis  will be performed.
 If \code{ca3type = "OCA3"}, then ordered three-way symmetrical correspondence analysis  will be performed.
 If \code{ca3type = "ONSCA3"}, then ordered three-way non-symmetrical correspondence analysis  will be performed.
+}
+\item{resp}{
+The input parameter for specifying in non-symmetrical three-way correspondence analysis variants (\code{ca3type = "NSCA3"} 
+and \code{ca3type = "ONSCA3"}) what is the response variable (logically antecendent to the others). 
+By default \code{resp = "row"}, but it could be the column variable \code{resp = "col"} or the tube
+variable \code{resp = "tube"}.  
 }
   \item{norder}{
 The input parameter for specifying the number of ordered variable when \code{ca3type = "OCA3"} or \code{ca3type = "ONSCA3"}.
@@ -83,8 +94,8 @@ Rosaria Lombardo, Michel van de Velden, Eric J Beh.
 }
 \examples{
 data(happy)
-tunelocal(happy, ca3type="CA3", boots=FALSE)
-%tunelocal(happy, ca3type = "NSCA3", boots=FALSE)
+tunelocal(Xdata = happy, ca3type = "CA3", boots = FALSE)
+%tunelocal(happy, ca3type = "NSCA3", resp="row", boots=FALSE)
 %tunelocal(happy,ca3type="OCA3", boots=TRUE, boottype="bootpsimple", nboots=5)
 %tunelocal(happy,ca3type="ONSCA3", boots=TRUE, boottype="bootnp", nboots=10)
 }

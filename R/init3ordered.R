@@ -13,13 +13,13 @@ init3ordered<-function (x, p, q, r, x0)
     Bpoly <- emerson.poly(mj, pii)
     Bpoly <- Bpoly[,-c(1) ]
   # Bpoly <- t(Bpoly)
-    cat("Bpoly \n")
-    print(Bpoly)
+   # cat("Bpoly \n")
+   # print(Bpoly)
     a <- diag(sqrt(pii)) %*% Bpoly[,1:p]
-  #  a <- Bpoly
+ #   a <- Bpoly[,1:p]
   
-   cat("Checking the orthonormality of polynomials a:\n")
-    print(t(a) %*% (a))
+   #cat("Checking the orthonormality of polynomials a:\n")
+    #print(t(a) %*% (a))
     y <- aperm(x0, c(2, 3, 1))
     dim(y) <- c(n[2], n[3] * n[1])
     pj <- apply(y/sum(y), 1, sum)
@@ -27,14 +27,13 @@ init3ordered<-function (x, p, q, r, x0)
     mj <- c(1:n[2])
     Bpoly <- emerson.poly(mj, pj)
     Bpoly <- Bpoly[,-c(1) ]
-  #  Bpoly <- t(Bpoly)
-    cat("Bpoly flattened\n")
-    print(Bpoly)
+  #    cat("Bpoly flattened\n")
+  #  print(Bpoly)
    b <- diag(sqrt(pj)) %*% Bpoly[, 1:q]
- #   b <-  Bpoly
+#    b <-  Bpoly[,1:q]
 
-    cat("Checking the orthonormality of polynomials b:\n")
-    print(t(b) %*% (b))
+   # cat("Checking the orthonormality of polynomials b:\n")
+    #print(t(b) %*% (b))
     y <- aperm(x0, c(3, 1, 2))
     dim(y) <- c(n[3], n[1] * n[2])
     pk <- apply(y/sum(y), 1, sum)
@@ -43,13 +42,13 @@ init3ordered<-function (x, p, q, r, x0)
     Bpoly <- emerson.poly(mj, pk)
     Bpoly <- Bpoly[,-c(1) ]
 #    Bpoly <- t(Bpoly)
-    cat("Bpoly flattened\n")
-    print(Bpoly)
+    #cat("Bpoly flattened\n")
+    #print(Bpoly)
     cc <- diag(sqrt(pk)) %*% Bpoly[, 1:r]
- #  cc <-  Bpoly
+ #  cc <-  Bpoly[,1:r]
 
-    cat("Checking the orthonormality of polynomials cc\n")
-    print(t(cc) %*% (cc))
+    #cat("Checking the orthonormality of polynomials cc\n")
+    #print(t(cc) %*% (cc))
     dimnames(x) <- nom
    # cat("fine di init3\n")
    # print(a)
@@ -63,9 +62,9 @@ init3ordered<-function (x, p, q, r, x0)
     Z <- t(a) %*% xsf %*% bc
    # Z <- t(a) %*%diag(sqrt(pii))%*% xsf%*%Kron(diag(sqrt(pj)),diag(sqrt(pk))) %*% bc
  
-   cat("index ==inerzia of Z'Z and ZZ' and Z2\n")
-    print(sum(diag(t(Z) %*% Z)))
-    print(sum(diag((Z) %*% t(Z))))
+   #cat("index ==inerzia of Z'Z and ZZ' and Z2\n")
+    #print(sum(diag(t(Z) %*% Z)))
+    #print(sum(diag((Z) %*% t(Z))))
  # cat("Z table after Trivariate Moment Decomposition\n")
   #print(Z)
 #zij=t(a)%*%apply(xsf,2,sum)%*%b

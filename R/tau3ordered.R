@@ -40,8 +40,8 @@ tau3ordered<-
     khin3 <- tau3 - tauij - tauik - khjk
     ikhin3 <- khin3/devt
     #cat("Numerator Values of partial and total indices\n")
-    nom <- c("TauIJ-num", "TauIK-num", "ChiJK-num", "Chi3-num", 
-             "TauM-num")
+    nom <- c("TauIJ", "TauIK", "ChiJK", "Chi3", 
+             "TauM")
     nomI <- c("TauIJ", "TauIK", "ChiJK", "Chi3", "TauM")
     x <- c(tauij, tauik, khjk, khin3, tau3)
     y <- (100 * x)/tau3
@@ -58,9 +58,11 @@ tau3ordered<-
     zz <- c(itauij, itauik, ikhjk, ikhin3, itau3)
     zz2 <- c(Cij, Cik, Cjk, Cijk, CM)
     zz3 <- c(dij, dik, djk, dres, dtot)
-    z <- rbind(x, zz, y, zz2, zz3)
-    nomr <- c("Numerator values of partial terms", "Indices", 
-              "% of Inertia", "C-Statistics", "degree of freedom")
+pvalue<-1-pchisq(zz2,zz3)
+x2<-zz2/zz3
+    z <- rbind(x, zz, y, zz2, zz3,pvalue,x2)
+    nomr <- c("Index Numerator", "Index", 
+              "% of Inertia", "C-Statistic", "df","p-value","C-statistic/df")
     dimnames(z) <- list(nomr, nom)
    z<-round(z, digits = digits)
    # cat("C-statistic of Marcotorchino\n")
@@ -90,7 +92,7 @@ tau3ordered<-
   #  cat("index numerator of tau_ij reconstructed by 2 polynomials \n")
   #  print(tauij)
     z3ij<-(z3par^2/(devt))*(ni-1)*(n-1)
-    cat("partition of index numerator of tau_ij reconstructed by 2 polynomials \n")
+    #cat("partition of index numerator of tau_ij reconstructed by 2 polynomials \n")
     tauijcol<-apply(z3ij,2,sum)
     tauijrow<-apply(z3ij,1,sum)
     #browser()
@@ -232,6 +234,6 @@ tautot<-(sum(z3n^2)/devt)*(ni-1)*(n-1)
     zijk<-round(zijk,digits=digits)
     #============================================================
     
-    return(list(z=z,zij=zij,zik=zik,zjk=zjk,zijk=zijk))
+    return(list(z=z,zij=zij,zik=zik,zjk=zjk,zijk=zijk,pij=pij,pik=pik,pjk=pjk))
   }
 

@@ -18,12 +18,15 @@ When the input parameter, in \code{print.CA3variants}, is \code{digits = 3},
 the function prints all the results using three digital numbers.
 }
 \usage{
-\S3method{print}{CA3variants}(x, digits = 3,...)
+\S3method{print}{CA3variants}(x, printall= FALSE, digits = 3,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-the name of the output of the main function CAvariants.
+The name of the output of the main function CAvariants.
+}
+ \item{printall}{
+The logical parameter that specifies if to print all the results or some of them. By default, \code{printall = FALSE}. 
 }
   \item{digits}{
 The input parameter specifying the digital number. By default, \code{digits = 3}.
@@ -43,7 +46,7 @@ of the components, the row standard and principal coordinates, the interactive c
 principal coordinates, the inner-product matrix of coordinates, the core array and index partitioning.
 In detail:
 \item{CA3variants}{The output of the kind of three-way correspondence analysis analysis considered.}
-\item{DataMatrix}{The original three-way contingency table.}
+\item{Data}{The original three-way contingency table.}
 \item{xs}{The centred and weighted three-way contingency table when the input parameters are \code{ctr=T} 
 and \code{std=T}.}
 \item{xhat}{The three-way contingency table approximated (reconstructed) by the three component matrices 
@@ -51,8 +54,17 @@ and \code{std=T}.}
 \item{nxhat2}{The sum of squares of the approximated contingency table.}
 \item{prp}{The ratio between the inertia of the complete contingency table and the inertia of the approximated contingency table.} 
 \item{fi}{The principal row coordinates.}
-\item{fiC}{The standard row coordinates.}
+\item{fiStandard}{The standard row coordinates.}
 \item{gjk}{The principal colum-tube coordinates.}
+\item{gjkStandard}{The standard colum-tube coordinates.}
+\item{fj}{The principal column coordinates.}
+\item{fjStandard}{The standard column coordinates.}
+\item{gik}{The principal row-tube coordinates.}
+\item{gikStandard}{The standard row-tube coordinates.}
+\item{fk}{The principal tube coordinates.}
+\item{fkStandard}{The standard tube coordinates.}
+\item{gij}{The principal row-colum coordinates.}
+\item{gijStandard}{The standard row-colum coordinates.}
 \item{rows}{The row marginals of the three-way data table.}
 \item{cols}{The column marginals of the three-way data table.}
 \item{tubes}{The tube marginals of the three-way data table.}
@@ -89,7 +101,7 @@ Differently, these analysis use a new method of decomposition called Trivariate 
 Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons
 }
 \author{
-Rosaria Lombardo, Eric J Beh.
+Rosaria Lombardo, Eric J Beh and Michel van de Velden.
 }
 %\note{
 %%  ~~further notes~~
@@ -100,13 +112,13 @@ Rosaria Lombardo, Eric J Beh.
 %}
 \examples{
 data(happy)
-ris.ca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "CA3") 
+ris.ca3<-CA3variants(happy, dims= c(p=2,q=2,r=2), ca3type = "CA3") 
 print(ris.ca3)
-ris.nsca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "NSCA3") 
+ris.nsca3<-CA3variants(happy, dims = c(p=2,q=2,r=2), ca3type = "NSCA3") 
 print(ris.nsca3)
-ris.oca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "OCA3",norder=3) 
+ris.oca3<-CA3variants(happy, dims = c(p=3,q=5,r=4), ca3type = "OCA3",norder=3) 
 print(ris.oca3)
-ris.onsca3<-CA3variants(happy,p=2,q=2,r=2, ca3type = "ONSCA3",norder=3) 
+ris.onsca3<-CA3variants(happy, dims = c(p=3,q=5,r=4), ca3type = "ONSCA3",norder=3) 
 print(ris.onsca3)
 
 }

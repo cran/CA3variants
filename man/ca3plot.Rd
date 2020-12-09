@@ -9,8 +9,7 @@ This function is used in the main plot function  when the plot type parameter is
 \code{plottype = "biplot"} and the variants of three-way CA are not ordered. It can produce a row or a column biplot. 
 }
 \usage{
-ca3plot(frows, gcols, firstaxis, lastaxis, nseg, inertiapc, thingseg, col1, col2, 
-col3, size1, size2)
+ca3plot(frows, gcols, firstaxis, lastaxis, inertiapc, size1, size2, biptype, addlines)
 }
 \arguments{
 \item{frows}{
@@ -25,37 +24,28 @@ The first axis number.
 \item{lastaxis}{
 The second axis number. 
 }
-\item{nseg}{
-The vectors/arrows number where to project  principal (or standard) coordinates. 
-}
 \item{inertiapc}{
 The percentage of the explained inertia by each dimension.
 }
-\item{thingseg}{
-The principal or standard coordinates used to draw vectors (arrows). 
-}
-\item{col1}{
-The colour for the row variable labels.
-}
-\item{col2}{
-The colour for the column variable labels.
-}
-\item{col3}{
-The colour for the  vectors (arrows) used in biplots.
-}
 \item{size1}{
-The size of the plotted symbol for categories in biplot. 
+The size of the plotted symbol for categories in biplots. 
 }
 \item{size2}{
-The size of the plotted text for categories in biplot. 
+The size of the plotted text for categories in biplots. 
 }
+\item{biptype}{The input parameter for specifying what kind of biplots is requested. By default, 
+it is equal to \code{column-tube}, but could be \code{row}.
+}
+\item{addlines}{The input parameter for plotting lines in  biplot. By default, it is equal to \code{addlines = TRUE}.}
 }
 \references{
 Beh EJ and Lombardo R 2014 Correspondence Analysis: Theory, Practice and New Strategies. Wiley.\cr
 Lombardo R Beh EJ 2016 Variants of Simple Correspondence Analysis. The R Journal, 8 (2), 167--184.
+Van de Velden M, Iodice D'Enza A, Palumbo F 2017. Cluster Correspondence Analysis. Psychometrika, 82, 158--185.
+Gower JC, Lubbe SG, and Le Roux, NJ 2011. Understanding biplots. New York: Wiley.
 }
 \author{
-Rosaria Lombardo and Eric J. Beh
+Rosaria Lombardo, Eric J. Beh and Michel van de Velden.
 }
 \note{
 This function depends on the \code{R} library \code{plotly}.

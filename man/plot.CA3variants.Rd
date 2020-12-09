@@ -6,16 +6,22 @@ Graphical display resulting from  \code{CAvariants3}
 }
 \description{
 The function \code{plot.CA3variants} allows the analyst to graphically display 
-the biplot from their analysis. 
-When the input parameter is \code{biptype = "column-tube"}, the function displays the column-tube 
+six types of biplots from their analysis. 
+When the input parameter is \code{biptype = "column-tube"} (or \code{biptype = "col-tube"}), the function displays the column-tube 
 interactive biplot.  
-When the input parameter is \code{biptype = "row"}, the function displays the row interactive biplot.  
+When the input parameter is \code{biptype = "row"}, the function displays the row biplot.  
+When the input parameter is \code{biptype = "col"}, the function displays the column  biplot.  
+When the input parameter is \code{biptype = "row-tube"}, the function displays the row-tube biplot.  
+When the input parameter is \code{biptype = "tube"}, the function displays the tube biplot.  
+When the input parameter is \code{biptype = "row-column"} (or \code{biptype = "row-col"}), the function displays the row-column 
+interactive biplot.  
+
 By default, \code{biptype = "column-tube"}.
 }
 \usage{
-\S3method{plot}{CA3variants}(x, firstaxis = 1, lastaxis = 2, cex = 0.8,  
-biptype="column-tube", scaleplot = 1,  plot3d = FALSE, pos=1, 
-size1=1, size2=2, invproj = FALSE, col1 = "blue", col2 = "red",...)
+\S3method{plot}{CA3variants}(x, firstaxis = 1, lastaxis = 2, thirdaxis = 3, cex = 0.8,  
+biptype="column-tube", scaleplot = NULL,  plot3d = FALSE, pos = 1, 
+size1 = 1, size2 = 2, addlines = TRUE,...)
 }
 \arguments{
   \item{x}{
@@ -27,24 +33,24 @@ The dimension reflected along the horizontal axis.
   \item{lastaxis}{
 The dimension reflected along the vertical axis.
 }
+ \item{thirdaxis}{
+The dimension reflected along the third axis when \code{plot3d = TRUE}.
+}
   \item{cex}{
 The parameter that specifies the size of character labels of points in graphical displays. 
 By default, it is equal to 0.8.
 }
-%  \item{plottype}{
-%The input parameter for specifying what kind of graphical display is requested. By default, 
-%it is equal to biplot.
-%}
  \item{biptype}{
 The input parameter for specifying what kind of biplot is requested. By default, 
-it is equal to \code{column-tube}, but could be \code{row}.
+it is equal to \code{column-tube}, but could be \code{row-tube}, \code{row-column}, \code{row},
+\code{column} and \code{tube}.
 }
-   \item{scaleplot}{
-The scaling parameter for pos=1,size=2,cols=c(1,4). By default, it is equal to 1.
+\item{scaleplot}{
+The scaling parameter for biplots to pull points away from the origin (see gamma biplot in Gower et al 2011). 
+By default, it is equal to the overall average 
+for the sum of squares of the two sets of coordinates (principal and standard ones), because of
+the average sum of squares for the two sets of points is the same (see Van de Velden et al 2017).
 }
-%  \item{arrow}{
-%The flag parameter to display arrows (T or F), if T the distances between the column-tube categories are represented as arrows.
-%}
 \item{plot3d}{The logical parameter specifies whether a 3D plot is to be included 
 in the output or not. By default, \code{plot3d = FALSE}.
 }
@@ -54,10 +60,8 @@ in the output or not. By default, \code{plot3d = FALSE}.
 }
 \item{size2}{The input parameter for specifying the label size. By default, it is equal to 2.
 }
-\item{invproj}{The logical parameter specifies whether to portray standard coordinates as vectors and principal coordinates as points or vice-versa.
-By default, \code{invproj = TRUE}.}
-\item{col1}{The input parameter for specifying the row label colour. By default, it is blue.}
-\item{col2}{The input parameter for specifying the column label colour. By default, it is red.}
+\item{addlines}{The input parameter for plotting lines in  biplots (the points in standard coordinates 
+are represented using lines). By default, it is equal to \code{addlines = TRUE}.}
 \item{...}{Further arguments passed to or from other methods.}
 }
 \details{
@@ -68,10 +72,13 @@ Graphical displays of three-way correspondence analysis variants. Interactive pl
 the graphical results of this function.
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons
+Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
+Van de Velden M, Iodice D'Enza A, Palumbo F 2017. Cluster Correspondence Analysis. Psychometrika, 82, 158--185.\cr
+Gower JC, Lubbe SG, and Le Roux, NJ 2011. Understanding biplots. New York: Wiley.\cr
+Lombardo R, Beh EJ and Kroonenberg PM (2020-preprint) Symmetrical and Non-Symmetrical Variants of Three-Way Correspondence Analysis for Ordered Variables. Statistical Science Journal, p. 1-33.
 }
 \author{
-Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
+Rosaria Lombardo, Eric J Beh and Michel van de Velden.
 }
 
 %\note{
@@ -85,14 +92,14 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 %}
 \examples{
 data(happy)
-ris.ca3<-CA3variants(happy, p = 2, q = 2, r = 2, ca3type = "CA3") 
-plot(ris.ca3,invproj=TRUE, col1="red", col2="green")
-ris.nsca3<-CA3variants(happy,  ca3type = "NSCA3") 
-plot(ris.nsca3, plot3d = TRUE)
-ris.oca3<-CA3variants(happy, p = 2, q = 2, r = 2, ca3type = "OCA3", norder = 3) 
-plot(ris.oca3)
-ris.onsca3<-CA3variants(happy, p = 2, q = 2, r = 2, ca3type = "ONSCA3", norder = 3) 
-plot(ris.onsca3)
+ris.ca3<-CA3variants(happy, dims = c(p = 2, q = 2, r = 2), ca3type = "CA3") 
+plot(ris.ca3)
+ris.nsca3<-CA3variants(happy, dims = c(p = 2, q = 2, r = 2), ca3type = "NSCA3") 
+plot(ris.nsca3, biptype = "row", plot3d = TRUE)
+ris.oca3<-CA3variants(happy, dims = c(p = 3, q = 5, r = 4), ca3type = "OCA3", norder = 3) 
+plot(ris.oca3, biptype = "tube",firstaxis=4,lastaxis=7)
+ris.onsca3<-CA3variants(happy, dims = c(p = 3, q = 5, r = 4), ca3type = "ONSCA3", norder = 3) 
+plot(ris.onsca3,biptype="row",firstaxis=6,lastaxis=7)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

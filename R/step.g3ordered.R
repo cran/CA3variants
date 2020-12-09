@@ -31,7 +31,7 @@ g <- ax %*% bc# g de dimensions c(p,(q x r))
 dim(g) <- c(p, q, r)
 dim(Z) <- c(p, q, r)
 param$g <- g
-param$Z <- Z
+param$Z <- Z #includes the metrics
 #browser()
 param
 }
