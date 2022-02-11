@@ -22,7 +22,7 @@ tube names [1:2] "urban", "rural"
 %%  ~~ reference to a publication or URL from which the data were obtained ~~
 %}
 \references{
-Beh EJ and Lombardo R 2014 Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons. \cr
+Beh EJ and Lombardo R (2014) Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons. \cr
 }
 \examples{
 olive <-structure(c(20, 15, 12, 17, 16, 28, 18, 17, 18, 18, 

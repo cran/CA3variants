@@ -17,7 +17,7 @@ The old component of the first mode.}
 The new component of the first mode.}
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh}

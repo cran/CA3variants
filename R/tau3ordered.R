@@ -40,9 +40,9 @@ tau3ordered<-
     khin3 <- tau3 - tauij - tauik - khjk
     ikhin3 <- khin3/devt
     #cat("Numerator Values of partial and total indices\n")
-    nom <- c("TauIJ", "TauIK", "ChiJK", "Chi3", 
-             "TauM")
-    nomI <- c("TauIJ", "TauIK", "ChiJK", "Chi3", "TauM")
+    nom <- c("TauIJ-num", "TauIK-num", "TauJK-num", "TauIJK-num", 
+             "TauM-num")
+    nomI <- c("TauIJ", "TauIK", "TauJK", "TauIJK", "TauM")
     x <- c(tauij, tauik, khjk, khin3, tau3)
     y <- (100 * x)/tau3
     dres <- (ni - 1) * (nj - 1) * (nk - 1)

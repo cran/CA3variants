@@ -32,7 +32,7 @@ The three-way contingency table weighted with respect the suitable weight matric
 the analysis variants).
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

@@ -33,7 +33,7 @@ and \code{resamptype=2} to Poisson distribution.}
 %% ...
 %}
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. Wiley.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Michel van de Velden, Eric J Beh.

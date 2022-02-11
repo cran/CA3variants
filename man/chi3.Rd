@@ -26,8 +26,8 @@ association term. It also shows the explained inertia, the degrees of freedom an
 p-value of each term of the partition.
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\\
-Carlier A and Kroonenberg P (1996). Decompositions and biplots in three-way correspondence analysis. Psychometrika, 61, 355-373.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
+Carlier A and Kroonenberg PM (1996) Decompositions and biplots in three-way correspondence analysis. Psychometrika, 61, 355-373.
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

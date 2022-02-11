@@ -25,7 +25,7 @@ This function is utilised from several other functions like \code{CA3variants},
 %\value{
 %}
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

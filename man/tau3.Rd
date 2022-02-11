@@ -32,7 +32,7 @@ association term. It also shows the C statistic of each term, its degrees of fre
 \item{devt}{The denominator of the Marcotorchino index.}
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

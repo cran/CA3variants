@@ -19,7 +19,7 @@ The original three-way contingency table.
 %differences between the weighted data array and the reconstructed data array. 
 %}
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\\
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
 }
 \author{
 Rosaria Lombardo, Eric J Beh.

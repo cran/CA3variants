@@ -26,7 +26,7 @@ three-way association term. It also shows the polynomial componets of inertia, t
 percentage of explained inertia, the degrees of freedom and p-value of each term of the partition.
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

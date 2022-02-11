@@ -34,8 +34,8 @@ p2jk<-pj %o% pk
     khijk <- n* (sum((pjk - p2jk)^2/p2jk))
     khin3 <- khi3 - khiij - khiik - khijk
    # cat("Values of partial and total indices\n")
-    nom <- c("chiIJ", "chiIK", "chiJK", "chi3", 
-        "chiIJK")
+    nom <- c("chi2IJ", "chi2IK", "chi2JK", "chi2IJK", 
+        "chi2")
     nomI <- c("IJ", "IK", "JK", "Chi3", "chiIJK")
     dres <- (ni - 1) * (nj - 1) * (nk - 1)
     dij <- (ni - 1) * (nj - 1)

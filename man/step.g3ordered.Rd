@@ -24,7 +24,7 @@ derived via the Trivariate Moment Decomposition algorithm.
 The core matrix whose the general element can be interpreted as a generalized singular value.
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

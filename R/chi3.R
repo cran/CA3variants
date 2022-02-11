@@ -25,8 +25,8 @@ function(f3,digits=3){
     khik <- n * (sum(pik^2/(pi %o% pk)) - 1)
     khjk <- n * (sum(pjk^2/(pj %o% pk)) - 1)
     khin3 <- khi3 - khij - khik - khjk
-    
-    nom <- c("X2IJ", "X2IK", "X2JK", "X2INTER", "X2IJK")
+    nom <- c("chi2IJ", "chi2IK", "chi2JK", "chi2IJK", 
+        "chi2")
     x <- c(khij, khik, khjk, khin3, khi3)
     y <- (100 * x)/khi3
     dijk <- (ni - 1) * (nj - 1) * (nk - 1)

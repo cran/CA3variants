@@ -25,7 +25,7 @@ They are all utilised from the function \code{tuckerORDERED}.
 \value{
 Component matrices from the Trivariate Moment Decomposition decomposition.}
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

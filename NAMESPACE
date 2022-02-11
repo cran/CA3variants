@@ -1,5 +1,8 @@
 S3method("print","CA3variants")
 S3method("plot","CA3variants")
+S3method("summary","CA3variants")
+S3method("print","tunelocal")
+S3method("plot","tunelocal")
 import(methods,tools,multichull,checkmate)
 importFrom("grDevices", "dev.new")
 importFrom("multichull","CHull")
@@ -25,9 +28,3 @@ importFrom("ggplot2","ggplot")
 importFrom("gridExtra","grid.arrange")
 exportPattern("^[[:alpha:]]+")
 #exportClasses("cabasicresults")
-#export(
-#"CAvariants",
-#"plot.CAvariants",
-#"summary.CAvariants",
-#"print.CAvariants"
-#)

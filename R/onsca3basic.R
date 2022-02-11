@@ -1,7 +1,7 @@
-onsca3basic<-function(x, p,q,r, test = 10^-6, ctr = T, std = T,norder=3)
+onsca3basic<-function(x, p,q,r, test = 10^-6, ctr = T, std = T,norder=3,sign = TRUE)
 {
 #-------------------------------------------------------------------------
-#  3-way ordered non-symmetrical correspondence analysis
+##  3-way ordered non-symmetrical correspondence analysis
 #  
 #  x 3-way contingency table
 # ni nj nk original table dimensions
@@ -10,7 +10,10 @@ onsca3basic<-function(x, p,q,r, test = 10^-6, ctr = T, std = T,norder=3)
 #  ctr     (T or F) if F the analysis is not centered
 #---------------------------------------------------------------------------
 nnom <- dimnames(x)
-nomi <- nnom[[1]]
+I<-dim(x)[1]
+ J<-dim(x)[2]    
+ K<-dim(x)[3]
+ nomi <- nnom[[1]]
 nomj <- nnom[[2]]
 nomk <- nnom[[3]]
 tot<-sum(x)
@@ -23,9 +26,13 @@ xs <- rstand3(x, ctr = ctr, std = std)* sqrt((tot - 1) * (n[1] - 1) *(1/devt))#l
 #xsg<-xs$xg
 #browser()
 #res <- tuckerORDEREDnotrivial(xsg, p=p, q=q, r=r,x, test=test,order=order)
+if (sign==TRUE){
 res <- tuckerORDERED(xs, p=p, q=q, r=r, x, test=test,norder=norder) #good
-#res <- tuckerORDERED(xsg, p=p, q=q, r=r, x=xsg, test=test,order=order) #but need to modify init3ordered to update poly
-#res<-signscore(res$a,res$b,res$cc,ni,nj,nk,p=ni-1,q=nj-1,r=nk-1,core=res$g,IFIXA=0,IFIXB=0,IFIXC=0) #given negative core, change signs in components
+res<-signscore(res$a,res$b,res$cc,I,J,K,p=p,q=q,r=r,core=res$g,IFIXA=0,IFIXB=0,IFIXC=0) #given negative core, change signs in components
+}
+if (sign==FALSE){
+res <- tuckerORDERED(xs, p=p, q=q, r=r, x, test=test,norder=norder) #good
+}
 #browser()
 ncore<-dim(res$g)
 np <- paste("p", 1:ncore[1], sep = "")

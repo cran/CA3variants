@@ -1,11 +1,14 @@
 nsca3basic <-
-function(x, p, q, r, test = 10^-6, ctr = T, std = T){
+function(x, p, q, r, test = 10^-6, ctr = T, std = T,sign = TRUE){
 #--------------------------------------NSCA3 basic
 # response variable is the row variable 
 # otherwise you have to change the dimensionality
 #------------------------------------------------
     nnom <- dimnames(x)
-    nomi <- nnom[[1]]
+I<-dim(x)[1]
+    J<-dim(x)[2]    
+    K<-dim(x)[3]
+       nomi <- nnom[[1]]
     nomj <- nnom[[2]]
     nomk <- nnom[[3]]
     tot <- sum(x)
@@ -14,7 +17,13 @@ function(x, p, q, r, test = 10^-6, ctr = T, std = T){
     devt <- 1 - sum(pi^2)
     xs <- rstand3(x, ctr = ctr, std = std) * sqrt((tot - 1) * (n[1] - 1) * 
                                                       (1/devt))
+if (sign==TRUE){
     res <- tucker(xs, p, q, r, test)
+res<-signscore(res$a,res$b,res$cc,I,J,K,p,q,r,core=res$g,IFIXA=0,IFIXB=0,IFIXC=0) #given negative core, change signs in components
+}
+if (sign==FALSE){
+    res <- tucker(xs, p, q, r, test)
+}
 ncore<-dim(res$g)
 np <- paste("p", 1:ncore[1], sep = "")
 nq <- paste("q", 1:ncore[2], sep = "")

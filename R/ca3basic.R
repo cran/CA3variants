@@ -1,14 +1,23 @@
 ca3basic <-
-function(x, p, q, r, test = 10^-6, ctr = T, std = T){
+function(x, p, q, r, test = 10^-6, ctr = T, std = T, sign = TRUE){
         nnom <- dimnames(x)
-    nomi <- nnom[[1]]
+I<-dim(x)[1]
+    J<-dim(x)[2]    
+    K<-dim(x)[3]
+       nomi <- nnom[[1]]
     nomj <- nnom[[2]]
     nomk <- nnom[[3]]
    # np <- paste("p", 1:p, sep = "")
    # nq <- paste("q", 1:q, sep = "")
    # nr <- paste("r", 1:r, sep = "")
     xs <- standtab(x, ctr = ctr, std = std) * sqrt(sum(x)) #to get chi3 
+if (sign==FALSE){
     res <- tucker(xs, p, q, r, test)
+}
+if (sign==TRUE){
+    res <- tucker(xs, p, q, r, test)
+res<-signscore(res$a,res$b,res$cc,I,J,K,p,q,r,core=res$g,IFIXA=0,IFIXB=0,IFIXC=0) #given negative core, change signs in components
+}
 ncore<-dim(res$g)
 np <- paste("p", 1:ncore[1], sep = "")
 nq <- paste("q", 1:ncore[2], sep = "")

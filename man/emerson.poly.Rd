@@ -24,9 +24,9 @@ Describe the value returned
 \item{B}{The matrix of the orthogonal polynomials without the trivial polynomial.}
 }
 \references{
-Beh EJ and Lombardo R 2014 Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons.\cr
-Emerson PL 1968  Numerical construction of orthogonal polynomials from a general recurrence formula. Biometrics, 24 (3), 695-701.\cr
-Lombardo R Beh EJ Variants of Simple Correspondence Analysis. The R Journal, 8 (2), 167--184.
+Beh EJ and Lombardo R (2014) Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons.\cr
+Emerson PL (1968)  Numerical construction of orthogonal polynomials from a general recurrence formula. Biometrics, 24 (3), 695-701.\cr
+Lombardo R Beh EJ (2016) Variants of Simple Correspondence Analysis. The R Journal, 8 (2), 167--184.
 }
 \author{
 Rosaria Lombardo and Eric J Beh.

@@ -43,7 +43,7 @@ The function \code{tucker} is utilised from the functions \code{ca3basic}, \code
 \item{cont}{The number of iterations that are required for the Tucker3 algorithm to converge.}
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh.

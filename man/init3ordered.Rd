@@ -42,7 +42,7 @@ variables.
 %% ...
 }
 \references{
-Beh E J and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh E J and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

@@ -19,7 +19,7 @@ The matrices of the row, column and tube components derived via the Tucker3 mode
 The three-way reconstructed table of centred profiles. 
 }
 \references{
-Beh E J and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh E J and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

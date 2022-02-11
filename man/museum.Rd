@@ -22,7 +22,7 @@ The rows are individuals. The first column concerns the number of visits, the se
 %%  ~~ reference to a publication or URL from which the data were obtained ~~
 %}
 \references{
-Beh EJ and Lombardo R 2014 Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons. \cr
+Beh EJ and Lombardo R (2014) Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons. \cr
 }
 \examples{
 museum<-structure(list(nvis = structure(c(2L, 2L, 4L, 4L, 1L, 3L, 3L, 

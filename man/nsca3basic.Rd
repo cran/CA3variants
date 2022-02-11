@@ -11,7 +11,7 @@ It decomposes the Marcotorchino index, computes principal axes, coordinates, wei
 total inertia (equal to the Marcotorchino index) and the rank of the matrix.
 }
 \usage{
-nsca3basic(x, p, q, r, test = 10^-6, ctr = T, std = T)
+nsca3basic(x, p, q, r, test = 10^-6, ctr = T, std = T, sign = TRUE)
 }
 \arguments{
   \item{x}{
@@ -35,6 +35,7 @@ The flag parameter to center the data (T or F), if F the data are not centered.
   \item{std}{
 The flag parameter to weight the data (T or F), if F the data are not weighted.
 }
+\item{sign}{The input parameter for changing the sign to the components according to the core sign.}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -58,10 +59,10 @@ They help to explain the strength of the association among the three principal c
 \item{iteration }{The number of iterations that are required for the TUCKALS3 algorithm to converge.}
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
-Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
+Rosaria Lombardo, Eric J Beh.
 }
 %\note{
 %%  ~~further notes~~

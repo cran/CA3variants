@@ -5,11 +5,11 @@
 Three-way Ordered Non-Symmetrical Correspondence Analysis
 }
 \description{
-This function is used in the main function CAvariants when the input parameter is \code{ca3type="ONSCA3"}. \cr
+This function is used in the main function \code{CA3variants} when the input parameter is \code{ca3type="ONSCA3"}. \cr
 It performs the three-way symmetric correspondence analysis by TUCKALS3.
 }
 \usage{
-onsca3basic(x, p, q, r, test = 10^-6, ctr = T, std = T, norder=3)
+onsca3basic(x, p, q, r, test = 10^-6, ctr = T, std = T, norder = 3, sign = TRUE)
 }
 \arguments{
   \item{x}{The three-way contingency table.
@@ -35,6 +35,7 @@ The flag parameter (T or F) if F the analysis is not standardized.
  \item{norder}{
 The number of ordered variables considered.
 }
+\item{sign}{The input parameter for changing the sign to the components according to the core sign.}
 }
 
 \value{
@@ -56,7 +57,7 @@ They help to explain the strength of the association between the three principal
 \item{iteration }{The number of iterations that are required for the TUCKALS3 algorithm to converge.}
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh.

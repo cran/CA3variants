@@ -1,23 +1,44 @@
 print.CA3variants <-function(x, printall=FALSE, digits=3,...) {
 if (printall==FALSE){   
 #--------------------------------------------
-cat("Percentage contributions of components to the total inertia for column-tube biplots\n\n")
+#cat("The three-way contingency table considered\n\n")
+#print(x$Data)
+#--------------------------------------------
+if ((x$ca3type=="CA3")||(x$ca3type=="OCA3")) {
+
+cat("Percentage contributions of the components to the total inertia for column-tube biplots\n\n")
     print(round(x$inertiacoltub,digits=digits))
-cat("Percentage contributions of components to the total inertia for row biplots\n\n")
-    print(round(x$inertiarow,digits=digits))
 #---------------------------------------------------
-cat("Percentage contributions of  components to the total inertia for row-tube biplots\n\n")
+cat("Percentage contributions of the components to the total inertia for row-tube biplots\n\n")
     print(round(x$inertiarowtub,digits=digits))
-cat("Percentage contributions of  components to the total inertia for column biplots\n\n")
-    print(round(x$inertiacol,digits=digits))
 #---------------------------------------------------
-cat("Percentage contributions of components to the total inertia for row-column biplots\n\n")
+cat("Percentage contributions of the components to the total inertia for row-column biplots\n\n")
     print(round(x$inertiarowcol,digits=digits))
-cat("Percentage contributions of components to the total inertia for tube biplots\n\n")
-    print(round(x$inertiatube,digits=digits))
-#--------------------------------------
+#---------------------------------------------------
+}#end for symmetric
+#-----------------------------------------------------------
+if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {
+if (x$resp=="row"){
+cat("Percentage contributions of the components to the total inertia for pred biplots\n\n")
+    print(round(x$inertiacoltub,digits=digits))
+}
+#---------------------------------------------------
+if ((x$resp=="column")||(x$resp=="col")){
+cat("Percentage contributions of the components to the total inertia for pred biplots\n\n")
+    print(round(x$inertiarowtub,digits=digits))
+ }
+#---------------------------------------------------
+if (x$resp=="tube"){
+cat("Percentage contributions of the components to the total inertia for pred biplots\n\n")
+    print(round(x$inertiarowcol,digits=digits))
+}
+#---------------------------------------------------
+}#end for non-symmetric
+
+
+#-----------------------------------index partition
 if ((x$ca3type=="OCA3")||(x$ca3type=="ONSCA3")){
-cat("\n Index partionings\n\n")
+cat("\n Index partition\n\n")
 print(round(x$index3res$z,digits=digits))    
 print(round(x$index3,digits=digits))    
 print(round(x$index3res$zij,digits=digits))
@@ -26,12 +47,15 @@ print(round(x$index3res$zij,digits=digits))
       cat("\n\n")
 }
 if ((x$ca3type=="CA3")||(x$ca3type=="NSCA3")){
-cat("\n Index partionings\n\n")
+cat("\n Index partition\n\n")
     print(round(x$index3,digits=digits))
     cat("\n\n")}
    
 }#end printall
+###############################################################################
 if (printall==TRUE){   
+#cat("The three-way contingency table \n\n")
+#print(x$Data)
  cat("Number of iteration steps \n")
     print(x$iteration)
     cat("\n    RESULTS for 3-way Correspondence Analysis\n")
@@ -80,24 +104,51 @@ cat("\n Row-Tube marginals\n\n")
     cat("Core array i.e. Generalised singular values  \n\n")
     print(round(x$g, digits = digits))
 #--------------------------------------------
-cat("Percentage contributions of components to the total inertia for column-tube biplots\n\n")
-    print(round(x$inertiacoltub,digits=digits))
-cat("Percentage contributions of components to the total inertia for row biplots\n\n")
+if ((x$ca3type=="CA3")||(x$ca3type=="OCA3")) {
+
+cat("Percentage contributions of the components to the total inertia for row biplots\n\n")
     print(round(x$inertiarow,digits=digits))
+cat("Percentage contributions of the components to the total inertia for column-tube biplots\n\n")
+    print(round(x$inertiacoltub,digits=digits))
 #---------------------------------------------------
-cat("Percentage contributions of  components to the total inertia for row-tube biplots\n\n")
-    print(round(x$inertiarowtub,digits=digits))
-cat("Percentage contributions of  components to the total inertia for column biplots\n\n")
+cat("Percentage contributions of the components to the total inertia for column biplots\n\n")
     print(round(x$inertiacol,digits=digits))
+cat("Percentage contributions of the components to the total inertia for row-tube biplots\n\n")
+    print(round(x$inertiarowtub,digits=digits))
 #---------------------------------------------------
-cat("Percentage contributions of components to the total inertia for row-column biplots\n\n")
-    print(round(x$inertiarowcol,digits=digits))
-cat("Percentage contributions of components to the total inertia for tube biplots\n\n")
+cat("Percentage contributions of the components to the total inertia for tube biplots\n\n")
     print(round(x$inertiatube,digits=digits))
+cat("Percentage contributions of the components to the total inertia for row-column biplots\n\n")
+    print(round(x$inertiarowcol,digits=digits))
+}#end for symmetric
 #--------------------------------------
+if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {
+if (x$resp=="row"){
+cat("Percentage contributions of the components to the total inertia for resp biplots\n\n")
+    print(round(x$inertiarow,digits=digits))
+cat("Percentage contributions of the components to the total inertia for pred biplots\n\n")
+    print(round(x$inertiacoltub,digits=digits))
+}
+#---------------------------------------------------
+if ((x$resp=="column")||(x$resp=="col")){
+cat("Percentage contributions of the components to the total inertia for resp biplots\n\n")
+    print(round(x$inertiacol,digits=digits))
+cat("Percentage contributions of the components to the total inertia for pred biplots\n\n")
+    print(round(x$inertiarowtub,digits=digits))
+ }
+#---------------------------------------------------
+if (x$resp=="tube"){
+cat("Percentage contributions of the components to the total inertia for resp biplots\n\n")
+    print(round(x$inertiatube,digits=digits))
+cat("Percentage contributions of the components to the total inertia for pred biplots\n\n")
+    print(round(x$inertiarowcol,digits=digits))
+}
+#---------------------------------------------------
+}#end for non-symmetric
+
 #--------------------------------------
     if ((x$ca3type=="OCA3")||(x$ca3type=="ONSCA3")){
-cat("\n Index partionings\n\n")
+cat("\n Index partition\n\n")
 print(round(x$index3res$z,digits=digits))    
 print(round(x$index3,digits=digits))    
 print(round(x$index3res$zij,digits=digits))
@@ -106,7 +157,7 @@ print(round(x$index3res$zij,digits=digits))
       cat("\n\n")
 }
 if ((x$ca3type=="CA3")||(x$ca3type=="NSCA3")){
-cat("\n Index partionings\n\n")
+cat("\n Index partition\n\n")
     print(round(x$index3,digits=digits))
     cat("\n\n")}
 

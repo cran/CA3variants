@@ -21,7 +21,7 @@ the Trivriate Moment Decomposition algorithm.}
 The difference between three-way contingency table and its reconstruction from the Trivariate Moment Decomposition model.
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

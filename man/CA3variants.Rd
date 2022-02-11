@@ -14,7 +14,8 @@ variables asymmetrically related, such that one of the variables is the response
 given the other two variables. It calculates the coordinates and inertia values of the chosen analyses. Furthermore, it allows to look at the index (Pearson's chi-squared or Marcotorchino's tau) partition.
 }
 \usage{
-CA3variants(Xdata, dims=c(p,q,r), ca3type = "CA3", test = 10^-6, resp = "row", norder = 3)
+CA3variants(Xdata, dims = c(p,q,r), ca3type = "CA3", test = 10^-6, 
+resp = "row", norder = 3, sign = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -52,6 +53,7 @@ The input parameter for specifying the number of ordered variable when \code{ca3
 By default, all three variables are ordered \code{norder = 3}. When  \code{norder = 1}, you assume that the ordered variable is the column variable.
 When  \code{norder = 2}, you assume that the ordered variables are the row and column variable.
 }
+\item{sign}{The input parameter for changing the sign to the components according to the core sign.}
 }
 \details{
 This function recall internally many other functions, depending on the setting of the input parameters.
@@ -66,19 +68,21 @@ the output value of \code{oca3basic} if the input parameter is \code{ca3type="OC
 the output value of \code{onsca3basic} if the input parameter is \code{ca3type="ONSCA3"} 
  }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
-Kroonenberg PM (1994). The TUCKALS line: a suite of programs for three-way data analysis. Computational Statistics and Data Analysis, 18, 73--96.\cr
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
+Kroonenberg PM (1994) The TUCKALS line: a suite of programs for three-way data analysis. Computational Statistics and Data Analysis, 18, 73--96.\cr
 Lombardo R, Beh EJ and Kroonenberg PM (2020-preprint) Symmetrical and Non-Symmetrical Variants of Three-Way Correspondence Analysis for Ordered Variables. Statistical Science Journal, p. 1-33.
 }
 \author{
 Rosaria Lombardo,  Eric J Beh and Michel van de Velden.
 }
 \examples{
-data(museum)
-CA3variants(Xdata = museum, dims = c(p=2,q=2,r=2), ca3type = "CA3") 
+%data(museum)
+%CA3variants(Xdata = museum, dims = c(p=2,q=2,r=2), ca3type = "CA3") 
+data(ratrank)
+CA3variants(Xdata = ratrank, dims = c(p=2,q=2,r=1), ca3type = "CA3") 
 data(happy)
-CA3variants(Xdata = happy, dims = c(p=3,q=5,r=4), ca3type = "OCA3") 
 CA3variants(Xdata = happy, dims = c(p=2,q=2,r=2), ca3type = "NSCA3") 
+CA3variants(Xdata = happy, dims = c(p=3,q=5,r=4), ca3type = "OCA3") 
 CA3variants(Xdata = happy, dims = c(p=3,q=5,r=4), ca3type = "ONSCA3") 
 }
 % R documentation directory.

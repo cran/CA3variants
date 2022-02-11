@@ -23,7 +23,7 @@ the function prints all the results using three digital numbers.
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-The name of the output of the main function CAvariants.
+The name of the output of the main function \code{CA3variants}.
 }
  \item{printall}{
 The logical parameter that specifies if to print all the results or some of them. By default, \code{printall = FALSE}. 
@@ -98,7 +98,7 @@ Differently, these analysis use a new method of decomposition called Trivariate 
 \item{iteration}{The number of iterations that are required for the Tuckals3 algorithm to converge.}
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
 }
 \author{
 Rosaria Lombardo, Eric J Beh and Michel van de Velden.

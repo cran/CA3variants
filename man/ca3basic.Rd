@@ -5,11 +5,11 @@
 Three-way Symmetrical Correspondence Analysis
 }
 \description{
-This function is used in the main function CA3variants when the input parameter is \code{ca3type="CA3"}. \cr
+This function is used in the main function \code{CA3variants} when the input parameter is \code{ca3type="CA3"}. \cr
 It performs the three-way symmetrical correspondence analysis by TUCKALS3 algorithm.
 }
 \usage{
-ca3basic(x, p, q, r, test = 10^-6, ctr = T, std = T)
+ca3basic(x, p, q, r, test = 10^-6, ctr = T, std = T, sign = TRUE)
 }
 \arguments{
   \item{x}{The three-way contingency table.
@@ -32,6 +32,7 @@ The flag parameter (T or F), if F the analysis is not centered.
   \item{std}{
 The flag parameter (T or F) if F the analysis is not standardized.
 }
+\item{sign}{The input parameter for changing the sign to the components according to the core sign.}
 }
 \value{
 \item{x}{The original three-way contingency table.}
@@ -51,7 +52,7 @@ three principal components.}
 \item{iteration}{The number of iterations that are required for the TUCKALS3 algorithm to converge.}
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
 }
 \author{
 Rosaria Lombardo, Eric J Beh.

@@ -20,7 +20,7 @@ It is utilised by a number of functions: \code{CA3variants}, \code{reconst3}, \c
  of rows, columns and tubes, respectively.}
 }
 \references{
-Beh EJ and Lombardo R (2014). Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
 }
 \author{
 Rosaria Lombardo, Eric J Beh.
