@@ -13,6 +13,9 @@ nnom <- dimnames(x)
 I<-dim(x)[1]
  J<-dim(x)[2]    
  K<-dim(x)[3]
+if (p==I){p<-p-1}
+if (q==J){q<-q-1}
+if (r==K){r<-r-1}
  nomi <- nnom[[1]]
 nomj <- nnom[[2]]
 nomk <- nnom[[3]]

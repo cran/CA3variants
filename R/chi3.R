@@ -25,8 +25,8 @@ function(f3,digits=3){
     khik <- n * (sum(pik^2/(pi %o% pk)) - 1)
     khjk <- n * (sum(pjk^2/(pj %o% pk)) - 1)
     khin3 <- khi3 - khij - khik - khjk
-    nom <- c("chi2IJ", "chi2IK", "chi2JK", "chi2IJK", 
-        "chi2")
+    nom <- c("term-IJ", "term-IK", "term-JK", "term-IJK", 
+        "term-total")
     x <- c(khij, khik, khjk, khin3, khi3)
     y <- (100 * x)/khi3
     dijk <- (ni - 1) * (nj - 1) * (nk - 1)
@@ -38,7 +38,7 @@ function(f3,digits=3){
    pvalue= 1 - pchisq(x, df)
 x2<-x/df
     z <- rbind(x, y, df,pvalue,x2)
-    nomr <- c("Index", "% of Inertia", "df","p-value", "X2/df")
+    nomr <- c("Chi-squared", "% of Inertia", "df","p-value", "X2/df")
     dimnames(z) <- list(nomr, nom)
     z <- round(z, digits = digits)
     list(z = z,pij=pij,pik=pik,pjk=pjk)

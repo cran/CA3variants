@@ -1,8 +1,8 @@
 Package: CA3variants
 Type: Package
 Title: Three-Way Correspondence Analysis Variants
-Version: 3.1
-Date: 2022-02-11
+Version: 3.2
+Date: 2022-04-11
 Author: Rosaria Lombardo, Eric J Beh and Michel van de Velden
 Maintainer: Rosaria Lombardo <rosaria.lombardo@unicampania.it>
 Description: Provides four variants of three-way correspondence analysis (ca):
@@ -15,6 +15,6 @@ LazyData: true
 License: GPL (> 2)
 URL: https://www.R-project.org
 NeedsCompilation: no
-Packaged: 2022-02-11 11:14:51 UTC; rosar
+Packaged: 2022-04-11 16:03:18 UTC; rosar
 Repository: CRAN
-Date/Publication: 2022-02-11 12:00:02 UTC
+Date/Publication: 2022-04-11 16:22:30 UTC

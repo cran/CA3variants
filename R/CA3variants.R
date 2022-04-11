@@ -216,8 +216,8 @@ productfkgij <- fkStandard %*% t(gij)
     #                                                                  #
     ####################################################################
     inertiaorig <- sum(S$xs^2) #total inertia of the table (I,J,K) equal to the related index 
-    inertiatot<-sum(S$g^2) #inertia reconstructed when p,q and r are different from I, J and K dimensions
-    inertiapcsum <- (sum(S$g^2)/inertiaorig*100)  
+    inertiatot<-sum(S$g^2) #inertia reconstructed when p,q and r are different from I, J and K dimensions    
+prp <- sum(S$g^2)/inertiaorig  
     inertiapc <- (S$g^2/inertiaorig*100)
  #   inertiaRSS <- (inertiaorig-inertiatot)
 #----------------------------------------------------------for row and col-tube biplot
@@ -245,8 +245,8 @@ productfkgij <- fkStandard %*% t(gij)
 #gammai=gammai,gammajk=gammajk,
 #gammaj=gammaj,gammaik=gammaik,gammak=gammak,gammaij=gammaij)
  
-ca3corporateresults<-list(Data = X, ca3type = ca3type, resp=resp, iteration = S$iteration, pi=pii, pj=pj, pk=pk, pij=pij, pik=pik, pjk=pjk,
-prp = S$prp, a=S$a,b=S$b,cc=S$cc,
+ca3corporateresults<-list(Data = X, ca3type = ca3type, resp=resp,  pi=pii, pj=pj, pk=pk, pij=pij, pik=pik, pjk=pjk,
+prp = prp, a=S$a,b=S$b,cc=S$cc,
 fi = fi, fiStandard= fiStandard, gjk = gjk,gjkStandard=gjkStandard, fj = fj, fjStandard= fjStandard, gik = gik,gikStandard=gikStandard, 
 fk = fk, fkStandard= fkStandard, gij = gij,gijStandard=gijStandard, 
 inertiaorig = inertiaorig,inertiatot=inertiatot,  inertiapc=inertiapc, inertiacoltub = inertiacoltub,inertiarow=inertiarow, inertiarowtub = inertiarowtub,inertiacol=inertiacol,

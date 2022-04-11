@@ -64,7 +64,7 @@ cord2<-as.matrix(cord2)
         dimnames(cord1)[[1]] <- rowlabels
 dimnames(cord2)[[1]] <- collabels
         inertiapc <- round(x$inertiacoltub)
-         plotitle <- "column-tube biplot"
+         plotitle <- " "
 catc=c(1,0)
 if (I<2) {stop("number of axis for plotting must be at least 2\n\n")}
 if ((x$ca3type=="CA3")||(x$ca3type=="OCA3")) {stop("WARNING: For symmetrical variants biptype should be not equal to resp or pred \n\n")}
@@ -75,14 +75,15 @@ if (is.null(scaleplot)==TRUE) {scaleplot<-gammai}
          cord2 <- x$gjkStandard * scaleplot
         I <- nrow(cord1)
         J <- nrow(cord2)
+Jaxis<-ncol(cord2)
   rowlabels <- dimnames(x$fi)[[1]]
         collabels <-  dimnames(x$gjk)[[1]]
         dimnames(cord2)[[1]] <- collabels
         dimnames(cord1)[[1]] <- rowlabels
         inertiapc <- round(x$inertiarow)
-        plotitle <- "row- biplot"
+        plotitle <- " "
 catc=c(0,1)
-if (J<2) {stop("number of axis for graphing must be at least 2\n\n")}
+if (Jaxis<2) {stop("number of axis for graphing must be at least 2\n\n")}
 if ((x$ca3type=="CA3")||(x$ca3type=="OCA3")) {stop("WARNING: For symmetrical variants biptype should be equal to row or column-tube, or column or tube etc \n\n")}
     }
 #------------------------------------------------------------biplots for symmetrical variants
@@ -91,6 +92,7 @@ if ((x$ca3type=="CA3")||(x$ca3type=="OCA3")) {stop("WARNING: For symmetrical var
   if (is.null(scaleplot)==TRUE) {scaleplot<-gammajk}
         cord1 <- x$fiStandard * scaleplot
         I <- nrow(cord1)
+Iaxis<-ncol(cord1)
         cord2 <- x$gjk/scaleplot
         J <- nrow(cord2)
   rowlabels <- dimnames(x$fi)[[1]]
@@ -100,10 +102,10 @@ cord2<-as.matrix(cord2)
         dimnames(cord1)[[1]] <- rowlabels
 dimnames(cord2)[[1]] <- collabels
         inertiapc <- round(x$inertiacoltub)
-         plotitle <- "column-tube biplot"
+         plotitle <- " "
 catc=c(1,0)
 
-if (I<2) {stop("number of axis for plotting must be at least 2\n\n")}
+if (Iaxis<2) {stop("number of axis for plotting must be at least 2\n\n")}
 if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {stop("WARNING: For symmetrical variants biptype should  be equal to resp or pred \n\n")}
     }
     if (biptype == "row") {
@@ -112,14 +114,15 @@ if (is.null(scaleplot)==TRUE) {scaleplot<-gammai}
          cord2 <- x$gjkStandard * scaleplot
         I <- nrow(cord1)
         J <- nrow(cord2)
+Jaxis<-ncol(cord2)
   rowlabels <- dimnames(x$fi)[[1]]
         collabels <-  dimnames(x$gjk)[[1]]
         dimnames(cord2)[[1]] <- collabels
         dimnames(cord1)[[1]] <- rowlabels
         inertiapc <- round(x$inertiarow)
-        plotitle <- "row- biplot"
+        plotitle <- " "
 catc=c(0,1)
-if (J<2) {stop("number of axis for graphing must be at least 2\n\n")}
+if (Jaxis<2) {stop("number of axis for graphing must be at least 2\n\n")}
 if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {stop("WARNING: For non-symmetrical variants biptype should be equal to resp or pred \n\n")}
     }
    #----------------------------------------------------------------------------------------------------------------
@@ -128,6 +131,7 @@ if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {stop("WARNING: For non-symmetr
 if (is.null(scaleplot)==TRUE) {scaleplot<-gammaik}
         cord1 <- x$fjStandard * scaleplot
         I <- nrow(cord1)
+Iaxis<-ncol(cord1)
         cord2 <- x$gik/scaleplot
         J <- nrow(cord2)
   rowlabels <- dimnames(x$fj)[[1]]
@@ -135,9 +139,9 @@ if (is.null(scaleplot)==TRUE) {scaleplot<-gammaik}
         dimnames(cord1)[[1]] <- rowlabels
 dimnames(cord2)[[1]] <- collabels
         inertiapc <- round(x$inertiarowtub)
-        plotitle <- "row-tube biplot"
+        plotitle <- ""
 catc=c(1,0)
-if (I<2) {stop("number of axis for graphing must be at least 2\n\n")}
+if (Iaxis<2) {stop("number of axis for graphing must be at least 2\n\n")}
 if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {stop("WARNING: For non-symmetrical variants biptype should be equal to resp or pred \n\n")}
     }#end biptype
     if ((biptype == "col")||(biptype == "column")) {
@@ -146,14 +150,15 @@ if (is.null(scaleplot)==TRUE) {scaleplot<-gammaj}
         cord2 <- x$gikStandard * scaleplot
         I <- nrow(cord1)
         J <- nrow(cord2)
+Jaxis<-ncol(cord2)
          rowlabels <- dimnames(x$fj)[[1]]
         collabels <-  dimnames(x$gik)[[1]]
         dimnames(cord2)[[1]] <- collabels
         dimnames(cord1)[[1]] <- rowlabels
         inertiapc <- round(x$inertiacol)
-        plotitle <- "col biplot"
+        plotitle <- " "
 catc=c(0,1)
-if (J<2) {stop("number of axis for graphing must be at least 2\n\n")}
+if (Jaxis<2) {stop("number of axis for graphing must be at least 2\n\n")}
 if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {stop("WARNING: For non-symmetrical variants biptype should be equal to resp or pred \n\n")}
    }
        if (((biptype == "column")||(biptype == "row-tube")||(biptype == "col")||(biptype == "tube-row"))) {
@@ -170,6 +175,7 @@ catall <- rep("solid",ndim[[2]])
 if (is.null(scaleplot)==TRUE) {scaleplot<-gammaij}
         cord1 <- x$fkStandard * scaleplot
         I <- nrow(cord1)
+Iaxis<-ncol(cord1)
         cord2 <- x$gij/scaleplot
         J <- nrow(cord2)
          rowlabels <- dimnames(x$fk)[[1]]
@@ -177,9 +183,9 @@ if (is.null(scaleplot)==TRUE) {scaleplot<-gammaij}
         dimnames(cord1)[[1]] <- rowlabels
 dimnames(cord2)[[1]] <- collabels
         inertiapc <- round(x$inertiarowcol)
-        plotitle <- "row-col biplot"
+        plotitle <- " "
 catc=c(1,0) #solid for standard coord and blank for principal ones
-if (I<2) {stop("number of axis for graphing must be at least 2\n\n")}
+if (Iaxis<2) {stop("number of axis for graphing must be at least 2\n\n")}
 if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {stop("WARNING: For non-symmetrical variants biptype should be equal to resp or pred \n\n")}
   }
 
@@ -189,24 +195,21 @@ if (is.null(scaleplot)==TRUE) {scaleplot<-gammak}
         cord2 <- x$gijStandard * scaleplot
         I <- nrow(cord1)
         J <- nrow(cord2)
+Jaxis<-ncol(cord2)
              rowlabels <- dimnames(x$fk)[[1]]
         collabels <-  dimnames(x$gij)[[1]]
         dimnames(cord2)[[1]] <- collabels
         dimnames(cord1)[[1]] <- rowlabels
         inertiapc <- round(x$inertiatube)
-        plotitle <- "tube biplot"
+        plotitle <- " "
 catc=c(0,1) #solid for standard coord and blank for principal ones
-if (J<2) {stop("number of axis for graphing must be at least 2\n\n")}
+if (Jaxis<2) {stop("number of axis for graphing must be at least 2\n\n")}
 if ((x$ca3type=="NSCA3")||(x$ca3type=="ONSCA3")) {stop("WARNING: For non-symmetrical variants biptype should be equal to resp or pred \n\n")}
     }
        if (( (biptype == "tube")||(biptype == "row-col")||(biptype == "row-column")||(biptype == "col-row")||(biptype == "column-row"))) {
-for (i in 1:ndim[[2]]){
-#categtub<-c(categtub, paste(rep("rowcol", ndim[[2]]),lab[[1]][i],sep=""))
-#categtub<-c(categtub, paste(rep("rowtub", ndim[[1]]),lab[[1]][i],sep=""))
-#categtub<-c(categtub, paste(lab[[1]],ndim[[2]],sep=""))
-categtub<-c(categtub, paste(rep("rowcol", ndim[[1]]),lab[[2]][i],sep=""))
+for (i in 1:ndim[[1]]){
+categtub<-c(categtub, paste(lab[[2]],ndim[[1]],sep=""))
 }
-
 }#end if biptype
 #----------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------------------------
@@ -225,6 +228,14 @@ for (i in 1:ndim[[3]]){
 categtub<-c(categtub, paste(rep("coltub", ndim[[2]]),lab[[3]][i],sep=""))
 }
 ####
+ if (( (biptype == "tube")||(biptype == "row-col")||(biptype == "row-column")||(biptype == "col-row")||(biptype == "column-row"))) {
+ Iaxis<- ncol(cord1)
+        Jaxis <- ncol(cord2)
+       categtub<-NULL
+catall <- rep("solid",ndim[[1]])
+for (i in 1:ndim[[2]]){
+categtub<-c(categtub, paste(lab[[1]],ndim[[2]],sep=""))
+}}
 ###
 frows <- data.frame(coord = cord1, labels = dimnames(cord1)[[1]], categ = rep("rows", I), linet=rep("blank",I) )
 gcols <- data.frame(coord = cord2, labels = dimnames(cord2)[[1]], categ = categtub, linet=rep("solid",J))

@@ -11,7 +11,7 @@ init3ordered<-function (x, p, q, r, x0)
     p <- min(p, n[1])
     mj <- c(1:n[1])
     Bpoly <- emerson.poly(mj, pii)
-    Bpoly <- Bpoly[,-c(1) ]
+    Bpoly <- Bpoly[,-c(1,2) ]
   # Bpoly <- t(Bpoly)
    # cat("Bpoly \n")
    # print(Bpoly)
@@ -26,7 +26,7 @@ init3ordered<-function (x, p, q, r, x0)
     q <- min(q, n[2])
     mj <- c(1:n[2])
     Bpoly <- emerson.poly(mj, pj)
-    Bpoly <- Bpoly[,-c(1) ]
+    Bpoly <- Bpoly[,-c(1,2) ]
   #    cat("Bpoly flattened\n")
   #  print(Bpoly)
    b <- diag(sqrt(pj)) %*% Bpoly[, 1:q]
@@ -40,7 +40,7 @@ init3ordered<-function (x, p, q, r, x0)
     r <- min(r, n[3])
     mj <- c(1:(n[3]))
     Bpoly <- emerson.poly(mj, pk)
-    Bpoly <- Bpoly[,-c(1) ]
+    Bpoly <- Bpoly[,-c(1,2) ]
 #    Bpoly <- t(Bpoly)
     #cat("Bpoly flattened\n")
     #print(Bpoly)

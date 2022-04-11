@@ -40,9 +40,8 @@ tau3ordered<-
     khin3 <- tau3 - tauij - tauik - khjk
     ikhin3 <- khin3/devt
     #cat("Numerator Values of partial and total indices\n")
-    nom <- c("TauIJ-num", "TauIK-num", "TauJK-num", "TauIJK-num", 
-             "TauM-num")
-    nomI <- c("TauIJ", "TauIK", "TauJK", "TauIJK", "TauM")
+  nom <- c("term-IJ", "term-IK", "term-JK", "term-IJK", "term-total")
+     # nomI <- c("TauIJ", "TauIK", "TauJK", "TauIJK", "TauM")
     x <- c(tauij, tauik, khjk, khin3, tau3)
     y <- (100 * x)/tau3
     dres <- (ni - 1) * (nj - 1) * (nk - 1)
@@ -61,8 +60,8 @@ tau3ordered<-
 pvalue<-1-pchisq(zz2,zz3)
 x2<-zz2/zz3
     z <- rbind(x, zz, y, zz2, zz3,pvalue,x2)
-    nomr <- c("Index Numerator", "Index", 
-              "% of Inertia", "C-Statistic", "df","p-value","C-statistic/df")
+    nomr <- c("Tau Numerator", "Tau", 
+              "% of Inertia", "CM-Statistic", "df","p-value","CM-statistic/df")
     dimnames(z) <- list(nomr, nom)
    z<-round(z, digits = digits)
    # cat("C-statistic of Marcotorchino\n")
@@ -108,12 +107,12 @@ x2<-zz2/zz3
     pvaltauijcol<-pval
     #row and column poly component
     dfi<-rep((nj-1),(ni))
-    perci<-tauijrow/tauij
+    perci<-tauijrow/tauij*100
     zi<-cbind(tauijrow,perci,dfi,pvaltauijrow)
     zitot<-apply(zi,2,sum)
     zi<-rbind(zi,zitot)
     dfj<-rep((ni-1),(nj))
-    percj<-tauijcol/tauij
+    percj<-tauijcol/tauij*100
     zj<-cbind(tauijcol,percj,dfj,pvaltauijcol)
     zjtot<-apply(zj,2,sum)
     zj<-rbind(zj,zjtot)
@@ -136,12 +135,12 @@ x2<-zz2/zz3
         pvaltauikcol<-1 - pchisq(tauikcol, ni-1)
     #row and column poly component
     dfi<-rep((nk-1),(ni))
-    perci<-tauikrow/tauik
+    perci<-tauikrow/tauik*100
     zi<-cbind(tauikrow,perci,dfi,pvaltauikrow)
     zitot<-apply(zi,2,sum)
     zi<-rbind(zi,zitot)
     dfk<-rep((ni-1),(nk))
-    perck<-tauikcol/tauik
+    perck<-tauikcol/tauik*100
     zk<-cbind(tauikcol,perck,dfk,pvaltauikcol)
     zktot<-apply(zk,2,sum)
     zk<-rbind(zk,zktot)
@@ -161,12 +160,12 @@ x2<-zz2/zz3
       pvaltaujkrow<-1 - pchisq(taujkrow, nk-1)
     #row and column poly component
     dfj<-rep((nk-1),(nj))
-    percj<-taujkrow/taujk
+    percj<-taujkrow/taujk*100
     zj<-cbind(taujkrow,percj,dfj,pvaltaujkrow)
     zjtot<-apply(zj,2,sum)
     zj<-rbind(zj,zjtot)
     dfk<-rep((nj-1),(nk))
-    perck<-taujkcol/taujk
+    perck<-taujkcol/taujk*100
     zk<-cbind(taujkcol,perck,dfk,pvaltaujkcol)
     zktot<-apply(zk,2,sum)
     zk<-rbind(zk,zktot)
@@ -204,21 +203,21 @@ tautot<-(sum(z3n^2)/devt)*(ni-1)*(n-1)
     pvaltauinttub<-1 - pchisq(tauinttub, nk-1)
     #-----------------------------------------
     #row column and tube poly component on three-way intereraction term
-    perci<-tauintrow/tautot
+    perci<-tauintrow/tautot*100
     zi<-cbind(tauintrow,perci,dfi,pvaltauintrow)
     zitot<-apply(zi,2,sum)
     zi<-rbind(zi,zitot)
     #----------
     dfj<-rep((ni-1)*(nk-1),(nj))
 #    dfj<-rep((ni-1)*(nk-1),(nj-1))
-    percj<-tauintcol/tautot
+    percj<-tauintcol/tautot*100
     zj<-cbind(tauintcol,percj,dfj,pvaltauintcol)
     zjtot<-apply(zj,2,sum)
     zj<-rbind(zj,zjtot)
     #--------
 #    dfk<-rep((ni-1)*(nj-1),(nk-1))
     dfk<-rep((ni-1)*(nj-1),(nk))
-    perck<-tauinttub/tautot
+    perck<-tauinttub/tautot*100
     zk<-cbind(tauinttub,perck,dfk,pvaltauinttub)
     zktot<-apply(zk,2,sum)
     zk<-rbind(zk,zktot)

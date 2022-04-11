@@ -26,14 +26,14 @@ cc <- svd(y)$u[, 1:r]
 	dimnames(y) <- NULL
 	mj <- c(1:n[2])
 	Bpoly <- emerson.poly(mj, pj)	# Emerson orthogonal polynomials
-	Bpoly <- Bpoly[, - c(1)  ]	#
+	Bpoly <- Bpoly[, - c(1,2)  ]	#
 	b <- diag(sqrt(pj)) %*% Bpoly[, 1:q]	#polinomio con pesi Di
 #	cat("Checking the orthonormality of polynomials of the #second mode b:\n")
 #	print(t(b) %*% (b))	
 #-----------------------------------------------------	
 mi <- c(1:n[1])
 Bpoly <- emerson.poly(mi, pii)	# Emerson orthogonal polynomials
-	Bpoly <- Bpoly[, - c(1)  ]	#Bpoly <- Bpoly[1:p,  ]
+	Bpoly <- Bpoly[, - c(1,2)  ]	#Bpoly <- Bpoly[1:p,  ]
 	a <- diag(sqrt(pii)) %*% Bpoly[, 1:p]	#polinomio con pesi Di
 #	cat("Checking the orthonormality of polynomials a:\n")
 #	print(t(a) %*% (a))	

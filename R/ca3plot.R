@@ -31,7 +31,7 @@ ymax <- max(FGcord[,lastaxis],FGcord[,firstaxis])
 scale_shape_manual(values=categ) +
     geom_vline(xintercept = 0, linetype=2, color="gray") + 
     geom_hline(yintercept = 0, linetype=2, color="gray") + 
-    labs(x=paste0("Dimension",firstaxis,sep=" (", round(inertiapc[firstaxis],1), "%)"),y=paste0("Dimension",lastaxis,sep= " (", round(inertiapc[lastaxis],1),"%)"))  +  
+    labs(x=paste0("Dimension",firstaxis,sep=" ", round(inertiapc[firstaxis],1), "%"),y=paste0("Dimension",lastaxis,sep= " ", round(inertiapc[lastaxis],1),"%"))  +  
     scale_x_continuous(limits = c(xmin, xmax)) +
     scale_y_continuous(limits = c(ymin, ymax)) + 
 theme(panel.background = element_rect(fill="white", colour="black")) + 

@@ -56,8 +56,8 @@ cat("\n Index partition\n\n")
 if (printall==TRUE){   
 #cat("The three-way contingency table \n\n")
 #print(x$Data)
- cat("Number of iteration steps \n")
-    print(x$iteration)
+# cat("Number of iteration steps \n")
+ #   print(x$iteration)
     cat("\n    RESULTS for 3-way Correspondence Analysis\n")
       #  if ((x$ca3type=="CA3")|(x$ca3type=="OCA3")){
       #  cat("Three-way Pearson standardised residuals \n")

@@ -27,7 +27,7 @@ a <- svd(y)$u[, 1:p]
 pj <- apply(y/sum(y), 1, sum)
   mj <- c(1:(n[2]))
 Bpoly <- emerson.poly(mj, pj)	# Emerson orthogonal polynomials
-	Bpoly <- Bpoly[, - c(1)  ]	#Bpoly <- Bpoly[1:p,  ]
+	Bpoly <- Bpoly[, - c(1,2)  ]	#Bpoly <- Bpoly[1:p,  ]
 	b <- diag(sqrt(pj)) %*% Bpoly[, 1:q]	#polinomio con pesi Di
 	#cat("Checking the orthonormality of polynomials b:\n")
 	#print(t(b) %*% (b))	

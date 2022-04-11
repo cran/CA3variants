@@ -36,7 +36,7 @@ p2jk<-pj %o% pk
    # cat("Values of partial and total indices\n")
     nom <- c("chi2IJ", "chi2IK", "chi2JK", "chi2IJK", 
         "chi2")
-    nomI <- c("IJ", "IK", "JK", "Chi3", "chiIJK")
+    nomI <- c("term-IJ", "term-IK", "term-JK", "term-IJK", "term-total")
     dres <- (ni - 1) * (nj - 1) * (nk - 1)
     dij <- (ni - 1) * (nj - 1)
     dik <- (ni - 1) * (nk - 1)
@@ -78,12 +78,12 @@ pval[i]<-1 - pchisq(chi2ijcol[i], ni-1)
 pvalchi2ijcol<-pval
 #row and column poly component
 dfi<-rep((nj-1),(ni-1))
-perci<-chi2ijrow/chi2ij
+perci<-chi2ijrow/chi2ij*100
 zi<-cbind(chi2ijrow,perci,dfi,pvalchi2ijrow)
 zitot<-apply(zi,2,sum)
 zi<-rbind(zi,zitot)
 dfj<-rep((ni-1),(nj-1))
-percj<-chi2ijcol/chi2ij
+percj<-chi2ijcol/chi2ij*100
 zj<-cbind(chi2ijcol,percj,dfj,pvalchi2ijcol)
 zjtot<-apply(zj,2,sum)
 zj<-rbind(zj,zjtot)
@@ -111,12 +111,12 @@ pvalchi2ikrow<-1 - pchisq(chi2ikrow, nk-1)
 pvalchi2ikcol<-1 - pchisq(chi2ikcol, ni-1)
 #row and column poly component
 dfi<-rep((nk-1),(ni-1))
-perci<-chi2ikrow/chi2ik
+perci<-chi2ikrow/chi2ik*100
 zi<-cbind(chi2ikrow,perci,dfi,pvalchi2ikrow)
 zitot<-apply(zi,2,sum)
 zi<-rbind(zi,zitot)
 dfk<-rep((ni-1),(nk-1))
-perck<-chi2ikcol/chi2ik
+perck<-chi2ikcol/chi2ik*100
 zk<-cbind(chi2ikcol,perck,dfk,pvalchi2ikcol)
 zktot<-apply(zk,2,sum)
 zk<-rbind(zk,zktot)
@@ -143,12 +143,12 @@ pvalchi2jkcol<-1 - pchisq(chi2jkcol, nj-1)
 pvalchi2jkrow<-1 - pchisq(chi2jkrow, nk-1)
 #row and column poly component
 dfj<-rep((nk-1),(nj-1))
-percj<-chi2jkrow/chi2jk
+percj<-chi2jkrow/chi2jk*100
 zj<-cbind(chi2jkrow,percj,dfj,pvalchi2jkrow)
 zjtot<-apply(zj,2,sum)
 zj<-rbind(zj,zjtot)
 dfk<-rep((nj-1),(nk-1))
-perck<-chi2jkcol/chi2jk
+perck<-chi2jkcol/chi2jk*100
 zk<-cbind(chi2jkcol,perck,dfk,pvalchi2jkcol)
 zktot<-apply(zk,2,sum)
 zk<-rbind(zk,zktot)
@@ -186,19 +186,19 @@ chi2inttub<-apply(z3n^2*n,3,sum)
 pvalchi2inttub<-1 - pchisq(chi2inttub, nk-1)
 #-----------------------------------------
 #row column and tube poly component on three-way intereraction term
-perci<-chi2introw/chi2int
+perci<-chi2introw/chi2int*100
 zi<-cbind(chi2introw,perci,dfi,pvalchi2introw)
 zitot<-apply(zi,2,sum)
 zi<-rbind(zi,zitot)
 #----------
 dfj<-rep((ni-1)*(nk-1),(nj-1))
-percj<-chi2intcol/chi2int
+percj<-chi2intcol/chi2int*100
 zj<-cbind(chi2intcol,percj,dfj,pvalchi2intcol)
 zjtot<-apply(zj,2,sum)
 zj<-rbind(zj,zjtot)
 #--------
 dfk<-rep((ni-1)*(nj-1),(nk-1))
-perck<-chi2inttub/chi2int
+perck<-chi2inttub/chi2int*100
 zk<-cbind(chi2inttub,perck,dfk,pvalchi2inttub)
 zktot<-apply(zk,2,sum)
 zk<-rbind(zk,zktot)
@@ -215,7 +215,7 @@ pvalue= 1 - pchisq(zznew, df)
 perc<-zznew/chi2tot*100
 x2<-zznew/df
     znew <- rbind(zznew, perc, df, pvalue,x2)
-    nomr <- c("partial terms", "%inertia",
+    nomr <- c("Chi-squared", "%inertia",
   "df","p-value","X2/df")
     dimnames(znew) <- list(nomr, nom)
 znew<-round(znew,digits=digits)

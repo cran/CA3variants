@@ -6,15 +6,7 @@ Summary of three-way correspondence analysis results
 }
 \description{
 This function prints the summary of the  results of three-way symmetrical or non-symmetrical correspondence analysis. 
-In particular it gives information on inertia and index partitioning.
-If the input parameter, in \code{CA3variants}, is \code{ca3type="CA3"}, the function gives the Pearson index partitioning 
-for three-way symmetrical correspondence analysis.
-If the input parameter, in \code{CA3variants}, is \code{ca3type="NSCA3"},
-the function gives  the Marcotorchino index partitioning for three-way non-symmetrical correspondence analysis.
-If the input parameter, in \code{CA3variants}, is \code{ca3type="OCA3"},
-the function gives  the Pearson index partitioning for ordered three-way symmetrical correspondence analysis.
-If the input parameter, in \code{CA3variants}, is \code{ca3type="ONSCA3"},
-the function gives  the Marcotorchino index partitioning for ordered three-way non-symmetrical correspondence analysis.
+In particular it gives information on core and squared core and on the explained inertia when reducing dimensions.
 }
 \usage{
 \S3method{summary}{CA3variants}(object, digits=3, ...)
@@ -34,8 +26,8 @@ The input parameter specifying the digital number. By default, \code{digits = 3}
 %}
 \value{
 The value of output returned in short depends on the kind of three-way correspondence analysis variant performed.
-Depending on the variant of three-way correspondence analysis performed, it gives  the explained inertia,
-the total inertia  and the index partitioning.
+It gives  the core table, the squared core table, the explained inertia,
+the total inertia and its proportion.
 }
 \references{
 Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr

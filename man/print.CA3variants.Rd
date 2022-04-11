@@ -95,7 +95,7 @@ These two three-way variants use the Tucker3 method of decomposition.
 When \code{ca3type = "OCA3"} or \code{ca3type = "ONSCA3"}, then an ordered three-way symmetrical or non-symmetrical
 correspondence analysis will be performed. 
 Differently, these analysis use a new method of decomposition called Trivariate Moment Decomposition.}
-\item{iteration}{The number of iterations that are required for the Tuckals3 algorithm to converge.}
+%\item{iteration}{The number of iterations that are required for the Tuckals3 algorithm to converge.}
 }
 \references{
 Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr

@@ -33,17 +33,15 @@ nr <- paste("r", 1:ncore[3], sep = "")
     res$ctr <- list(cti = res$a^2, ctj = res$b^2, ctk = res$cc^2)
 comp <- coord(res, x)    
 res$xinit <- x
-#browser()
+    iteration <- res$cont
     dimnames(comp$a) <- list(nomi, np)
     dimnames(comp$b) <- list(nomj, nq)
     dimnames(comp$cc) <- list(nomk, nr)
     dimnames(xhat) <- list(nomi, nomj, nomk)
 ca3results<-list( x = x, xs = xs, xhat = xhat, nxhat2 = 
                          nxhat2, prp = prp, a = comp$a, b = comp$b, cc = comp$cc, g = res$g, 
-                     iteration = res$cont)
+                     iteration = iteration)
 #class(ca3results)<-"ca3basicresults"
 return(ca3results)
-
-
 }
 
