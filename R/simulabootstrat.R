@@ -2,6 +2,7 @@ simulabootstrat<-function(Xtable,nboots=100,resamptype=1){
 # BOOTSTRAPPING for three-way contingency table
 #Xtable <- read.table(file = "Suicidedata.txt", header=TRUE)
 #Xtable<-happy
+set.seed(1234)
 X <- as.array(Xtable)
 rows <- dim(X)[1]
 cols <- dim(X)[2]

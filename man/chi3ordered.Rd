@@ -32,8 +32,8 @@ Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New S
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 }
 \examples{
-data(happy)
-chi3ordered(f3=happy, digits=3)
+#data(happy)
+chi3ordered(f3 = happy, digits = 3)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

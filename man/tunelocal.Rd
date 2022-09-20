@@ -20,8 +20,8 @@ when \code{resamptype=1} it considers a multinomial distribution, and when \code
 it  considers a poisson distribution. 
 }
 \usage{
-tunelocal(Xdata, ca3type = "CA3", resp = "row", norder = 3, digits = 3, boots = FALSE, 
-          nboots = 0, boottype= "bootpsimple", resamptype = 1, PercentageFit = 0.01) 
+tunelocal(Xdata, ca3type = "CA3", resp = "row", norder = 3, digits = 3, boots = FALSE,  
+nboots = 0, boottype= "bootpsimple", resamptype = 1, PercentageFit = 0.01) 
 }
 \arguments{
 \item{Xdata}{
@@ -55,7 +55,8 @@ The input parameter specifying the digital number. By default, \code{digits = 3}
 The flag parameter to perform the search of optimal dimensions using
 bootstrap samples. By defaults, \code{boots = FALSE}.}
   \item{nboots}{
-The number of bootstrap samples to generate when \code{boots = TRUE}. By default \code{nboots = 0}.
+The number of bootstrap samples to generate when \code{boots = TRUE}. Note that when \code{boots = FALSE},\cr
+by default \code{nboots = 0}, but when \code{boots = TRUE}, by default \code{nboots = 100}. 
 }
 \item{boottype}{The specification of the kind of bootstrap sampling to be performed. 
 If \code{boottype = "bootpsimple"}, then a parametric bootstrap using a simple sampling scheme will 
@@ -78,12 +79,12 @@ to multinomial distribution and \code{resamptype=2} to Poisson distribution.}
 %%  ~Describe the value returned
 %\item{XG}{The list of tables on which is performed the three-way CA variant.
 %It consists of the original array and (when \code{boots=T}) bootstrapped arrays.}
-\item{output1}{Chi-square criterion and df of models of the convex hull. 
- It gives the models that are located on the boundary of the convex hull 
-and selects an optimal model by means of the scree test values (st).
-When using \code{boots=F},  it gives the set of possible dimension combination
+\item{output1}{Chi-square criterion and df of models on the convex hull. 
+ It gives the criterion values of the models that are located on the boundary of the convex hull 
+and selects the optimal model by means of the scree test values (st).
+When using \code{boots = FALSE},  it gives the set of possible dimension combination
 of the original data using only the original data array.
-When using \code{boots=T},  it gives the set of possible dimension combination
+When using \code{boots = TRUE},  it gives the set of possible dimension combination
 of the original data using bootstrapped data arrays.
 }
 %\item{output2}{Chi-square criterion and df of models on the convex hull when using bootstrapped arrays.}
@@ -103,12 +104,12 @@ Mathematical & Statistical Psychology, 59, 133-150.
 \author{
 Rosaria Lombardo, Michel van de Velden, Eric J Beh.
 }
-%\examples{
+\examples{
 %data(happy)
-%tunelocal(Xdata = happy, ca3type = "CA3", boots = FALSE)
+tunelocal(Xdata = happy, ca3type = "CA3")
 %tunelocal(happy, ca3type = "NSCA3", resp="row", boots=FALSE)
 %tunelocal(happy,ca3type="OCA3", boots=TRUE, boottype="bootpsimple", nboots=5)
 %tunelocal(happy,ca3type="ONSCA3", boots=TRUE, boottype="bootnp", nboots=10)
-%}
+}
 \keyword{bootstrap}% use one of  RShowDoc("KEYWORDS")
 \keyword{dimension}% __ONLY ONE__ keyword per line

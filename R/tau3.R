@@ -36,7 +36,7 @@ function(f3, digits = 3){
     khin3 <- tau3 - tauij - tauik - khjk
     ikhin3 <-khin3/devt
    # cat("Numerator Values of partial and total indices\n")
-    nom <- c("term-IJ", "term-IK", "term-JK", "term-IJK", "term-total")
+    nom <- c("Term-IJ", "Term-IK", "Term-JK", "Term-IJK", "Term-total")
    # nomI <- c("TauIJ", "TauIK", "TauJK", "TauIJK", "TauM")
     x <- c(tauij, tauik, khjk, khin3, tau3)
     y <- (100 * x)/tau3
@@ -45,6 +45,7 @@ function(f3, digits = 3){
     dik<-(ni-1)*(nk-1)
     djk<-(nj-1)*(nk-1)
     dtot<-dij+dik+djk+dres
+    cost<-(n - 1) * (ni - 1) *  (1/devt)
     CM <- (n - 1) * (ni - 1) * itau3        
     Cij<-(n-1)*(ni-1)*itauij
     Cik<-(n-1)*(ni-1)*itauik
@@ -60,6 +61,6 @@ x2<-zz2/zz3
               "CM-Statistic","df","p-value","CM-Statistic/df")
     dimnames(z) <- list(nomr, nom)
     z <- round(z, digits = digits)
-    list(z = z, CM = CM,pij=pij,pik=pik,pjk=pjk)
+    list(z = z, CM = CM,pij=pij,pik=pik,pjk=pjk, cost=cost)
 }
 

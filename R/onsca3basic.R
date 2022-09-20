@@ -23,6 +23,7 @@ tot<-sum(x)
 n<-dim(x)
 pi <- apply(x/tot, 1, sum)
 devt <- 1 - sum(pi^2)
+#cost<-(tot - 1) * (n[1] - 1) *  (1/devt)
 xs <- rstand3(x, ctr = ctr, std = std)* sqrt((tot - 1) * (n[1] - 1) *(1/devt))#la fun orig standtab
 #xs <- standtabnew(x, ctr = ctr, std = std)*sqrt(tot)#la fun orig standtab
 #browser()

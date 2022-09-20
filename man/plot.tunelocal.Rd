@@ -50,7 +50,7 @@ Rosaria Lombardo,  Michel van de Velden and Eric J. Beh.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
 \examples{
-data(happy)
+%data(happy)
 res.tunelocal<-tunelocal(happy, ca3type = "CA3",boots = FALSE, 
           nboots = 0)
 plot(res.tunelocal)

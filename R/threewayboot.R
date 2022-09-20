@@ -1,8 +1,10 @@
 threewayboot<-function(Xdata,nboots=100){
-
+#------------------------------------------------------
 # Do nboots bootstrap on the observations x rows+cols+tubs categories indicator matrix X.
 # If X is a three way table first make the indicator using makeindicator.
 # The output is a list of threeway tables
+#------------------------------------------------------
+set.seed(1234)
  rows <- dim(Xdata)[[1]]
   cols <- dim(Xdata)[[2]]
   tubs <- dim(Xdata)[[3]]

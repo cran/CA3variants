@@ -6,8 +6,12 @@ Print of tunelocal function results
 }
 \description{
 This function prints the results of \code{tunelocal} for choosing the optimal model dimension of a variant of three-way correspondence analysis. 
-When the input parameter, in \code{print.tunelocal}, is \code{digits = 3},
-the function prints all the results using three digital numbers.
+When \code{boots = T} the number of different models that is assessed is based on the size of the original data being analysed.\cr
+For example, for a 4 x 5 x 4, there are 80 different models that are assessed.\cr
+When \code{boots = T},  the number of different models that is assessed is based on the size of all models \cr
+obtained from the combination of dimensions of the bootstrapped data. \cr
+For example, for a 4 x 5 x 4 array, there are 800 different models that are assessed. By default\code{nboots = 100}, \cr
+you can change the parameter value in input of \code{tunelocal} function.\cr
 }
 \usage{
 \S3method{print}{tunelocal}(x, digits = 3,...)
@@ -27,13 +31,18 @@ The input parameter specifying the digital number. By default, \code{digits = 3}
 %}
 \value{
 The value of output returned depends on the kind of sampling chosen.
-The sampling for making the convex hull can be based on the
-dimension of only original data or on the dimension of bootstrapped data samples.
+The sampling for making the convex hull can be based on the 
+ original data or on the bootstrapped data samples. 
 In detail:
-\item{output1}{The results of \code{tunelocal}.  It gives the models that are located on the boundary of the convex hull 
-and selects an optimal model by means of the scree test values (st).
-}
-%\item{output2}{The output of the model dimension using the bootstrapped data.}
+\item{XG}{The data samples used for assessing the optimal model dimension (original and/or bootstrapped).}
+%\item{risCAchi2}{Chi2 as goodness-of-fit criterion  for choosing the optimal model dimension.}
+%\item{risCAdf}{Degree of freedom as measure of complexity used for choosing the optimal model dimension.}
+\item{output1}{The results of \code{tunelocal}.  It gives the goodness-of-fit criteria of models that are located \cr
+on the boundary of the convex hull and selects the optimal model by means of the scree test values (st); \cr
+see Ceulemans and Kiers  (2006).}
+\item{ca3type}{It gives information about the kind of variant of three-way CA considered.}
+\item{boots}{The flag parameter to perform the search of optimal dimensions using
+bootstrap samples. By defaults, \code{boots = FALSE}.}
 }
 \references{
 Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
@@ -53,12 +62,11 @@ Rosaria Lombardo,  Michel van de Velden and Eric J. Beh.
 %\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
-%\examples{
+\examples{
 %data(happy)
-%res.tunelocal<-tunelocal(happy, ca3type = "CA3",boots = FALSE, 
-%          nboots = 0) 
-%print(res.tunelocal)
-%}
+res.tunelocal<-tunelocal(happy, ca3type = "CA3") 
+print(res.tunelocal)
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{tunelocal}

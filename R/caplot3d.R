@@ -1,4 +1,4 @@
-caplot3d<-function(coordR,coordC,inertiaper,firstaxis=1,lastaxis=2,thirdaxis=3){
+caplot3d<-function(coordR, coordC, inertiaper, firstaxis = 1, lastaxis = 2, thirdaxis = 3){
 #------------------------------------
 # 3Dim plot 
 # coordR= row  coordinates
@@ -21,11 +21,11 @@ p = add_trace(p, x = cc[,firstaxis], y = cc[,lastaxis], z = cc[,thirdaxis],
               mode = "text", text = rownames(cc), 
               textfont = list(color = "blue"), showlegend = FALSE) 
 p <- config(p, displayModeBar = FALSE)
-p <- layout(p, scene = list(xaxis = list(title = colnames(rc)[1]),
-                            yaxis = list(title = colnames(rc)[2]),
-                            zaxis = list(title = colnames(rc)[3]),
-                            aspectmode = "data"),
-            margin = list(l = 0, r = 0, b = 0, t = 0))
+#p <- layout(p, scene = list(xaxis = list(title = colnames(rc)[1]),
+#                           yaxis = list(title = colnames(rc)[2]),
+#                           zaxis = list(title = colnames(rc)[3]),
+#                            aspectmode = "data"),
+#            margin = list(l = 0, r = 0, b = 0, t = 0))
 p$sizingPolicy$browser$padding <- 0
 my.3d.plot = p
 my.3d.plot

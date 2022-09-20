@@ -13,19 +13,21 @@ summary.CA3variants <-function(object,digits=3,...){
 #      cat("\n\n")
 #}
 #--------------------------------------
-cat("Core table \n\n")
-print(round(object$g,digits=digits))
-cat("Squared core table\n\n")
-    print(round(object$g^2,digits=digits))
+cat("Core table \n")
+print(round(object$g/sqrt(object$cost),digits=digits))
+cat("Squared core table\n")
+    print(round(object$g^2/object$cost,digits=digits))
 
 #---------------------------------------------------
   cat("Explained inertia (reduced dimensions)\n")
-  print(round(object$inertiatot,digits=digits))
+  print(round(object$inertiatot/object$cost,digits=digits))
+cat("\n")
     cat("Total inertia (complete dimensions)\n")
-  print(round(object$inertiaorig,digits=digits))
-cat("Proportion of explained inertia (when reducing dimensions)\n\n")
+  print(round(object$inertiaorig/object$cost,digits=digits))
+cat("\n")
+cat("Percentage of explained inertia (when reducing dimensions)\n")
 #    print(round(object$inertiatot/object$inertiaorig), digits=digits)
-    print(object$prp, digits=digits)
+    print(object$prp*100, digits=digits)
 #if ((object$ca3type=="OCA3")||(object$ca3type=="ONSCA3")){
 #cat("\n Index partionings\n\n")
 #print(round(object$index3res$z,digits=digits))    

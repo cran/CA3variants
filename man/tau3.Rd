@@ -47,7 +47,7 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 
 \examples{
 data(happy)
-tau3(happy,digits=3)
+tau3(happy, digits = 3)
 }
 \keyword{partition}
 \keyword{index}% __ONLY ON__ keyword per line

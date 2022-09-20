@@ -15,8 +15,7 @@ I<-dim(x)[1]
     n <- dim(x)
     pi <- apply(x/tot, 1, sum)
     devt <- 1 - sum(pi^2)
-    xs <- rstand3(x, ctr = ctr, std = std) * sqrt((tot - 1) * (n[1] - 1) * 
-                                                      (1/devt))
+    xs <- rstand3(x, ctr = ctr, std = std) * sqrt((tot - 1) * (n[1] - 1) *  (1/devt))
 if (sign==TRUE){
     res <- tucker(xs, p, q, r, test)
 res<-signscore(res$a,res$b,res$cc,I,J,K,p,q,r,core=res$g,IFIXA=0,IFIXB=0,IFIXC=0) #given negative core, change signs in components

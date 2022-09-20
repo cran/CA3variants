@@ -1,5 +1,4 @@
-emerson.poly <-
-function (mj, pj) 
+emerson.poly <-function (mj, pj) 
 {
 #################Emerson polynomials, recurrence formulas
 #mj: natural scores for example c(1,2,3,4)

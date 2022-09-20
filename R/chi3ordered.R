@@ -34,9 +34,8 @@ p2jk<-pj %o% pk
     khijk <- n* (sum((pjk - p2jk)^2/p2jk))
     khin3 <- khi3 - khiij - khiik - khijk
    # cat("Values of partial and total indices\n")
-    nom <- c("chi2IJ", "chi2IK", "chi2JK", "chi2IJK", 
-        "chi2")
-    nomI <- c("term-IJ", "term-IK", "term-JK", "term-IJK", "term-total")
+    #nom <- c("chi2IJ", "chi2IK", "chi2JK", "chi2IJK",  "chi2")
+    nom <- c("Term-IJ", "Term-IK", "Term-JK", "Term-IJK", "Term-total")
     dres <- (ni - 1) * (nj - 1) * (nk - 1)
     dij <- (ni - 1) * (nj - 1)
     dik <- (ni - 1) * (nk - 1)
@@ -58,11 +57,12 @@ mj <- c(1:nj)
     mk <- c(1:nk)
     Cpoly <- emerson.poly(mk, pk)
     polk <- diag(sqrt(pk)) %*%(Cpoly[,-1]) #poly with weight Dk
-##################################################partial term 
+##################################################partial term IJ
 fij <- (pij - p2ij)/sqrt(p2ij)
 z3par<-   t(poli[,-1])%*%fij%*%polj[,-1]
 z3par2<-   t(poli)%*%fij%*%polj
-chi2ij=sum(z3par^2)*n 
+chi2ij<-sum(z3par^2)*n 
+pvalijtot<-1 - pchisq(chi2ij, (ni-1)*(nj-1))
 #cat("index chi2_ij reconstructed by 2 polynomials without the 0th order poly \n")
 chi2ijcol<-apply(z3par^2*n,2,sum)
 chi2ijrow<-apply(z3par^2*n,1,sum)
@@ -80,142 +80,145 @@ pvalchi2ijcol<-pval
 dfi<-rep((nj-1),(ni-1))
 perci<-chi2ijrow/chi2ij*100
 zi<-cbind(chi2ijrow,perci,dfi,pvalchi2ijrow)
-zitot<-apply(zi,2,sum)
+zitot<-c(apply(zi[,1:3],2,sum),pvalijtot)
 zi<-rbind(zi,zitot)
 dfj<-rep((ni-1),(nj-1))
 percj<-chi2ijcol/chi2ij*100
 zj<-cbind(chi2ijcol,percj,dfj,pvalchi2ijcol)
-zjtot<-apply(zj,2,sum)
+zjtot<-c(apply(zj[,1:3],2,sum),pvalijtot)
 zj<-rbind(zj,zjtot)
 zij<-rbind(zi,zj)
-nomi<-paste("poly",1:(ni-1),sep="")
-nomj<-paste("poly",1:(nj-1),sep="")
-dimnames(zij)<-list(c(nomi,"chi2ij-index",nomj,"chi2ij-index"),c("chi2ij-poly","%inertia","df","p-value"))
-#################################################partial term 
+nomi<-paste("poly-row",1:(ni-1),sep="")
+nomj<-paste("poly-col",1:(nj-1),sep="")
+dimnames(zij)<-list(c(nomi,"Chi2-IJ",nomj,"Chi2-IJ"),c("Term-IJ-poly","%inertia","df","p-value"))
+#################################################partial term IK
 fik <- (pik - p2ik)/sqrt(p2ik)
 z3par<-   t(poli[,-1])%*%fik%*%polk[,-1]
-chi2ik=sum(z3par^2)*n 
+chi2ik<-sum(z3par^2)*n 
+pvaliktot<-1 - pchisq(chi2ik, (ni-1)*(nk-1))
 z3par2<-   t(poli)%*%fik%*%polk
 chi2ikcol<-apply(z3par^2*n,2,sum)
 chi2ikrow<-apply(z3par^2*n,1,sum)
-#pval<-c()
-#for (i in 1:(ni-1)){
-#pval[i]<-1 - pchisq(chi2ikrow[i], nk-1)
-#}
-#pvalchi2ikrow<-pval
-pvalchi2ikrow<-1 - pchisq(chi2ikrow, nk-1)
-#pval<-c()
-#for (i in 1:(nk-1)){
-#pval[i]<-1 - pchisq(chi2ikcol[i], ni-1)
-#}
-pvalchi2ikcol<-1 - pchisq(chi2ikcol, ni-1)
+pval<-c()
+for (i in 1:(ni-1)){
+pval[i]<-1 - pchisq(chi2ikrow[i], nk-1)
+}
+pvalchi2ikrow<-pval
+pval<-c()
+for (i in 1:(nk-1)){
+pval[i]<-1 - pchisq(chi2ikcol[i], ni-1)
+}
+pvalchi2ikcol<-pval
 #row and column poly component
 dfi<-rep((nk-1),(ni-1))
 perci<-chi2ikrow/chi2ik*100
 zi<-cbind(chi2ikrow,perci,dfi,pvalchi2ikrow)
-zitot<-apply(zi,2,sum)
+zitot<-c(apply(zi[,1:3],2,sum),pvaliktot)
 zi<-rbind(zi,zitot)
 dfk<-rep((ni-1),(nk-1))
 perck<-chi2ikcol/chi2ik*100
 zk<-cbind(chi2ikcol,perck,dfk,pvalchi2ikcol)
-zktot<-apply(zk,2,sum)
+zktot<-c(apply(zk[,1:3],2,sum),pvaliktot)
 zk<-rbind(zk,zktot)
 zik<-rbind(zi,zk)
-nomi<-paste("poly",1:(ni-1),sep="")
-nomk<-paste("poly",1:(nk-1),sep="")
-dimnames(zik)<-list(c(nomi,"chi2ik-index",nomk,"chi2ik-index"),c("chi2ik-poly","%inertia","df","p-value"))
+nomi<-paste("poly-row",1:(ni-1),sep="")
+nomk<-paste("poly-tube",1:(nk-1),sep="")
+dimnames(zik)<-list(c(nomi,"Chi2-IK",nomk,"Chi2-IK"),c("Term-IK-poly","%inertia","df","p-value"))
 ################################################partial term 
    fjk <- (pjk - p2jk)/sqrt(p2jk)
 z3par<-   t(polj[,-1])%*%fjk%*%polk[,-1]
 z3par2<-   t(polj)%*%fjk%*%polk
-chi2jk=sum(z3par^2)*n 
+chi2jk<-sum(z3par^2)*n 
+pvaljktot<-1 - pchisq(chi2jk, (nj-1)*(nk-1))
 chi2jkcol<-apply(z3par^2*n,2,sum)
 chi2jkrow<-apply(z3par^2*n,1,sum)
-#pval<-c()
-#for (i in 1:(nk-1)){
-#pval[i]<-1 - pchisq(chi2jkcol[i], nj-1)
-#}
-pvalchi2jkcol<-1 - pchisq(chi2jkcol, nj-1)
-#pval<-c()
-#for (i in 1:(nj-1)){
-#pval[i]<-1 - pchisq(chi2jkrow[i], nk-1)
-#}
-pvalchi2jkrow<-1 - pchisq(chi2jkrow, nk-1)
+pval<-c()
+for (i in 1:(nk-1)){
+pval[i]<-1 - pchisq(chi2jkcol[i], nj-1)
+}
+pvalchi2jkcol<-pval
+pval<-c()
+for (i in 1:(nj-1)){
+pval[i]<-1 - pchisq(chi2jkrow[i], nk-1)
+}
+pvalchi2jkrow<-pval
 #row and column poly component
 dfj<-rep((nk-1),(nj-1))
 percj<-chi2jkrow/chi2jk*100
 zj<-cbind(chi2jkrow,percj,dfj,pvalchi2jkrow)
-zjtot<-apply(zj,2,sum)
+zjtot<-c(apply(zj[,1:3],2,sum),pvaljktot)
 zj<-rbind(zj,zjtot)
 dfk<-rep((nj-1),(nk-1))
 perck<-chi2jkcol/chi2jk*100
 zk<-cbind(chi2jkcol,perck,dfk,pvalchi2jkcol)
-zktot<-apply(zk,2,sum)
+zktot<-c(apply(zk[,1:3],2,sum),pvaljktot)
 zk<-rbind(zk,zktot)
 zjk<-rbind(zj,zk)
-nomj<-paste("poly",1:(nj-1),sep="")
-nomk<-paste("poly",1:(nk-1),sep="")
-dimnames(zjk)<-list(c(nomj,"chi2jk-index",nomk,"chi2jk-index"),c("chi2jk-poly","%inertia","df","p-value"))
+nomj<-paste("poly-col",1:(nj-1),sep="")
+nomk<-paste("poly-tube",1:(nk-1),sep="")
+dimnames(zjk)<-list(c(nomj,"Chi2-JK",nomk,"Chi2-JK"),c("Term-JK-poly","%inertia","df","p-value"))
 #################################three ordered variables and interaction term
 fijk=(p3 - pijk)/sqrt(pijk)
 z3n<-   t(poli[,-1])%*%flatten(fijk)%*%Kron(polj[,-1],polk[,-1])
 chi2int<-sum(z3n^2)*n
+pvalijktot<-1 - pchisq(chi2int, (ni-1)*(nj-1)*(nk-1))
 z3n2<-   t(poli)%*%flatten(fijk)%*%Kron(polj,polk)
 chi2tot<-sum(z3n2^2)*n
 dim(z3n)<-c(ni-1,nj-1,nk-1)
 chi2introw<-apply(z3n^2*n,1,sum)
-#pval<-c()
-#for (i in 1:(ni-1)){
-#pval[i]<-1 - pchisq(chi2introw[i], ni-1)
-#}
+pval<-c()
+for (i in 1:(ni-1)){
+pval[i]<-1 - pchisq(chi2introw[i], ni-1)
+}
+pvalchi2introw<-pval
 dfi<-rep((nj-1)*(nk-1),(ni-1))
-pvalchi2introw<-1 - pchisq(chi2introw, ni-1)
 #----------------------------------
 chi2intcol<-apply(z3n^2*n,2,sum)
-#pval<-c()
-#for (i in 1:(nj-1)){
-#pval[i]<-1 - pchisq(chi2intcol[i], nj-1)
-#}
-pvalchi2intcol<-1 - pchisq(chi2intcol, nj-1)
+pval<-c()
+for (i in 1:(nj-1)){
+pval[i]<-1 - pchisq(chi2intcol[i], nj-1)
+}
+pvalchi2intcol<-pval
 #-----------------------------------
 chi2inttub<-apply(z3n^2*n,3,sum)
-#pval<-c()
-#for (i in 1:(nk-1)){
-#pval[i]<-1 - pchisq(chi2inttub[i], nk-1)
-#}
-pvalchi2inttub<-1 - pchisq(chi2inttub, nk-1)
+pval<-c()
+for (i in 1:(nk-1)){
+pval[i]<-1 - pchisq(chi2inttub[i], nk-1)
+}
+pvalchi2inttub<-pval
 #-----------------------------------------
 #row column and tube poly component on three-way intereraction term
 perci<-chi2introw/chi2int*100
 zi<-cbind(chi2introw,perci,dfi,pvalchi2introw)
-zitot<-apply(zi,2,sum)
+zitot<-c(apply(zi[,1:3],2,sum),pvalijktot)
 zi<-rbind(zi,zitot)
 #----------
 dfj<-rep((ni-1)*(nk-1),(nj-1))
 percj<-chi2intcol/chi2int*100
 zj<-cbind(chi2intcol,percj,dfj,pvalchi2intcol)
-zjtot<-apply(zj,2,sum)
+zjtot<-c(apply(zj[,1:3],2,sum),pvalijktot)
 zj<-rbind(zj,zjtot)
 #--------
 dfk<-rep((ni-1)*(nj-1),(nk-1))
 perck<-chi2inttub/chi2int*100
 zk<-cbind(chi2inttub,perck,dfk,pvalchi2inttub)
-zktot<-apply(zk,2,sum)
+zktot<-c(apply(zk[,1:3],2,sum),pvalijktot)
 zk<-rbind(zk,zktot)
 zijk<-rbind(zi,zj,zk)
-nomi<-paste("poly",1:(ni-1),sep="")
-nomj<-paste("poly",1:(nj-1),sep="")
-nomk<-paste("poly",1:(nk-1),sep="")
+nomi<-paste("poly-row",1:(ni-1),sep="")
+nomj<-paste("poly-col",1:(nj-1),sep="")
+nomk<-paste("poly-tube",1:(nk-1),sep="")
 #browser()
-dimnames(zijk)<-list(c(nomi, "chi2int-index",nomj,"chi2int-index",nomk,"chi2int-index"),c("chi2int-poly","%inertia","df","p-value"))
+dimnames(zijk)<-list(c(nomi, "Chi2-IJK",nomj,"Chi2-IJK",nomk,"Chi2-IJK"),c("Term-IJK-poly","%inertia","df","p-value"))
 #============================================================
   zznew <- c(chi2ij, chi2ik, chi2jk, chi2int, chi2tot)
+zphi <- c(chi2ij/n, chi2ik/n, chi2jk/n, chi2int/n, chi2tot/n)
    df<- c(dij, dik, djk, dres, dtot)
 pvalue= 1 - pchisq(zznew, df)
 perc<-zznew/chi2tot*100
 x2<-zznew/df
-    znew <- rbind(zznew, perc, df, pvalue,x2)
-    nomr <- c("Chi-squared", "%inertia",
+    znew <- rbind(zznew, zphi, perc, df, pvalue,x2)
+    nomr <- c("Chi-squared", "Phi-squared","%inertia",
   "df","p-value","X2/df")
     dimnames(znew) <- list(nomr, nom)
 znew<-round(znew,digits=digits)

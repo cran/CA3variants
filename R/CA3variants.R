@@ -72,17 +72,19 @@ pii <- apply(X/sum(X), 1, sum)
     #                                                                                                                                                                                                         #
     #####################################################################################
         if(ca3type == "CA3"){
-           pi <- apply(X/sum(X), 1, sum)
+           pi <- apply(X/n, 1, sum)
 index3res<-chi3(X)        
 index3 <- index3res$z
+cost<-n
 #indexij<-NULL
 #indexik<-NULL
 #indexjk<-NULL
     } 
         if(ca3type == "OCA3"){
-           pi <- apply(X/sum(X), 1, sum)
+           pi <- apply(X/n, 1, sum)
 index3res<-chi3ordered(X)
         index3 <- index3res$zijk
+cost<-n
 #indexij<-chi3ordered(X)$zij
 #indexik<-chi3ordered(X)$zik
 #indexjk<-chi3ordered(X)$zjk
@@ -91,7 +93,8 @@ index3res<-chi3ordered(X)
 if(ca3type == "NSCA3") {
 index3res<-tau3(X)
         index3 <- tau3(X)$z
-        pi <- rep(1, ni)
+cost<-index3res$cost       
+pi <- rep(1, ni)
 #indexij<-NULL
 #indexik<-NULL
 #indexjk<-NULL
@@ -102,6 +105,7 @@ index3res<-tau3(X)
       #tauMres<-tau3ordered(X)
       #print(chi2res)
 index3res<-tau3ordered(X)
+cost<-index3res$cost
       index3 <- index3res$zijk
 #indexij<-tau3ordered(X)$zij
 #indexik<-tau3ordered(X)$zik
@@ -245,15 +249,14 @@ prp <- sum(S$g^2)/inertiaorig
 #gammai=gammai,gammajk=gammajk,
 #gammaj=gammaj,gammaik=gammaik,gammak=gammak,gammaij=gammaij)
  
-ca3corporateresults<-list(Data = X, ca3type = ca3type, resp=resp,  pi=pii, pj=pj, pk=pk, pij=pij, pik=pik, pjk=pjk,
+ca3results<-list(Data = X, ca3type = ca3type, resp=resp,  pi=pii, pj=pj, pk=pk, pij=pij, pik=pik, pjk=pjk,
 prp = prp, a=S$a,b=S$b,cc=S$cc,
 fi = fi, fiStandard= fiStandard, gjk = gjk,gjkStandard=gjkStandard, fj = fj, fjStandard= fjStandard, gik = gik,gikStandard=gikStandard, 
 fk = fk, fkStandard= fkStandard, gij = gij,gijStandard=gijStandard, 
 inertiaorig = inertiaorig,inertiatot=inertiatot,  inertiapc=inertiapc, inertiacoltub = inertiacoltub,inertiarow=inertiarow, inertiarowtub = inertiarowtub,inertiacol=inertiacol,
 inertiarowcol = inertiarowcol,inertiatube=inertiatube, iproductijk = productfigjk,iproductjik = productfjgik,iproductkij = productfkgij, 
-g = S$g, index3res = index3res, index3=index3)
-
-class(ca3corporateresults)<-"CA3variants"
-invisible(return(ca3corporateresults))
+g = S$g, index3res = index3res, index3=index3, cost=cost)
+class(ca3results)<-"CA3variants"
+invisible(return(ca3results))
 }
 

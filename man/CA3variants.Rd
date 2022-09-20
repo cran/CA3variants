@@ -11,10 +11,10 @@ It also performs  ordered  three-way symmetrical CA, when \code{ca3type = "OCA3"
 three-way non-symmetrical CA, when \code{ca3type = "ONSCA3"}, 
 by using the Trivariate Moment Decomposition. The non-symmetrical variants consider the three 
 variables asymmetrically related, such that one of the variables is the response to be predicted 
-given the other two variables. It calculates the coordinates and inertia values of the chosen analyses. Furthermore, it allows to look at the index (Pearson's chi-squared or Marcotorchino's tau) partition.
+given the other two variables. It calculates the coordinates and inertia values of the chosen analyses. 
+Furthermore, it allows to look at the index (Pearson's chi-squared or Marcotorchino's tau) partition.
 }
-\usage{
-CA3variants(Xdata, dims = c(p,q,r), ca3type = "CA3", test = 10^-6, 
+\usage{CA3variants(Xdata, dims = c(p, q, r), ca3type = "CA3", test = 10^-6, 
 resp = "row", norder = 3, sign = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.

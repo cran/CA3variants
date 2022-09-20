@@ -11,8 +11,8 @@ This three-way contingency table was generated from the database of the European
 \format{
   The format is:
 % num [1:13, 1:9] 81 66 150 667 67 24 47 430 743 132 ...\cr
-row names [1:3] "ED1", "ED2", "ED3", "ED45" 
-col names [1:5] "S1", "S2", "S3", "S4", "S5" 
+row names [1:4] "ED1", "ED2", "ED3", "ED45" 
+col names [1:6] "HS1", "HS2", "HS3", "HS4", "HS5", "HS>5" 
 tube names [1:4] "low", "middle", "high", "very-high"
 }
 %\details{

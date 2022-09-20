@@ -8,7 +8,6 @@ if ((biptype == "resp")||(biptype == "row")||(biptype == "col")||(biptype == "co
 dimcord<-dim(gcols)[[2]]
 if (dimcord<4) {stop("number of axis for graphing must be at least 2\n\n")}
 if ((dimcord-2)<lastaxis) {stop("unsuitable number of axis for graphing\n\n")}
-
 rglines=data.frame(d1=gcols[,firstaxis],d2=gcols[,lastaxis],attnam=gcols$categ)
 rglines$slp=rglines$d2/rglines$d1
 }
