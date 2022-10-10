@@ -23,7 +23,7 @@ tube names [1:4] "ED1", "ED2", "ED3", "ED45"
 %%  ~~ reference to a publication or URL from which the data were obtained ~~
 %}
 \references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons. \cr
+Lombardo R, van de Velden M and Beh E J (2022) Three-way Correspondence Analysis in R. (submitted) \cr
 }
 \examples{
 happyNL<-structure(c(11L, 12L, 15L, 7L, 2L, 6L, 17L, 13L, 0L, 2L, 4L, 

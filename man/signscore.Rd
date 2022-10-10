@@ -74,5 +74,5 @@ Rosaria Lombardo and Pieter M Kroonenberg.}
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{sign}
-\keyword{core}% __ONLY ONE__ keyword per line
+%\keyword{sign}
+\keyword{internal}% __ONLY ONE__ keyword per line

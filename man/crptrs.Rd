@@ -52,5 +52,5 @@ Rosaria Lombardo and Pieter M Kroonenberg.}
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{pointer}
-\keyword{components}% __ONLY ONE__ keyword per line
+\keyword{internal}
+%\keyword{components}% __ONLY ONE__ keyword per line

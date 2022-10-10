@@ -29,9 +29,9 @@ The flag parameter for centering the original table. If  \code{ctr=F} the origin
 \item{xs}{The weighted array with respect to the three associated metrics. It is used 
 when \code{CA3variants="NSCA"} and represents the three-way weighted and centred column profile table.}
 }
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.
+%}
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 }
@@ -44,5 +44,5 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{weight}
-\keyword{ multivariate }% __ONLY ONE__ keyword per line
+%\keyword{weight}
+\keyword{internal}% __ONLY ONE__ keyword per line

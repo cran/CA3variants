@@ -40,5 +40,5 @@ Rosaria Lombardo, Michel van de Velden, Eric J Beh.
 %\note{
 %%  ~~further notes~~
 %}
-\keyword{bootstrap}% use one of  RShowDoc("KEYWORDS")
-\keyword{dimension}% __ONLY ONE__ keyword per line
+%\keyword{bootstrap}% use one of  RShowDoc("KEYWORDS")
+\keyword{internal}% __ONLY ONE__ keyword per line

@@ -51,4 +51,4 @@ Rosaria Lombardo and Pieter M Kroonenberg.}
 %##--	or do  help(data=index)  for the standard data sets.
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{array}% __ONLY ONE__ keyword per line
+\keyword{internal}% __ONLY ONE__ keyword per line

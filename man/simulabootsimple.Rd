@@ -41,5 +41,5 @@ Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New S
 %\note{
 %%  ~~further notes~~
 %}
-\keyword{bootstrap}% use one of  RShowDoc("KEYWORDS")
-\keyword{dimension}% __ONLY ONE__ keyword per line
+%\keyword{bootstrap}% use one of  RShowDoc("KEYWORDS")
+\keyword{internal}% __ONLY ONE__ keyword per line

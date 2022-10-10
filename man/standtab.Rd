@@ -32,4 +32,4 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 %\note{
 %%  ~~further notes~~
 %}
-\keyword{multivariate}
+\keyword{internal}

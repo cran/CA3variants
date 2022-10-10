@@ -26,7 +26,8 @@ three-way association term. It also shows the polynomial componets of inertia, t
 percentage of explained inertia, the degrees of freedom and p-value of each term of the partition.
 }
 \references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
+Lombardo R, Beh EJ and Kroonenberg PM (2021) Symmetrical and Non-Symmetrical Variants of Three-Way Correspondence Analysis for Ordered Variables. 
+Statistical Science, 36 (4), 542-561.
 }
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.

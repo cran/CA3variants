@@ -70,7 +70,8 @@ the output value of \code{onsca3basic} if the input parameter is \code{ca3type="
 \references{
 Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
 Kroonenberg PM (1994) The TUCKALS line: a suite of programs for three-way data analysis. Computational Statistics and Data Analysis, 18, 73--96.\cr
-Lombardo R, Beh EJ and Kroonenberg PM (2020-preprint) Symmetrical and Non-Symmetrical Variants of Three-Way Correspondence Analysis for Ordered Variables. Statistical Science Journal, p. 1-33.
+Lombardo R, Beh EJ and Kroonenberg PM (2021) Symmetrical and Non-Symmetrical Variants of Three-Way Correspondence Analysis for Ordered Variables. 
+Statistical Science, 36 (4), 542-561.
 }
 \author{
 Rosaria Lombardo,  Eric J Beh and Michel van de Velden.

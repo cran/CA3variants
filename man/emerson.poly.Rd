@@ -37,4 +37,4 @@ Note that the sum of the marginals of the ordered variables should be one.
 %\examples{
 %emerson.poly(c(1,2,3,4,5), as.vector(c(.1,.2,.3,.2,.2)))
 %}
-\keyword{ nonparametric }% __ONLY ONE__ keyword per line
+\keyword{internal}% __ONLY ONE__ keyword per line

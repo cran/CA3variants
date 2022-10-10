@@ -34,10 +34,10 @@ The second axis number. By default, \code{lastaxis = 2}.
 The third axis number. By default, \code{thirdaxis = 3}.
 }
 }
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons.\cr
-Lombardo R Beh EJ (2016) Variants of Simple Correspondence Analysis. The R Journal, 8 (2), 167--184.\cr
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis: Theory, Practice %and New Strategies. John Wiley & Sons.\cr
+%Lombardo R Beh EJ (2016) Variants of Simple Correspondence Analysis. %The R Journal, 8 (2), 167--184.\cr
+%}
 \author{
 Rosaria Lombardo and Eric J. Beh
 }
@@ -48,4 +48,4 @@ This function depends on the \code{R} library \code{plotly}.
 %data(asbestos)
 %cabasic(asbestos)
 %}
-\keyword{plot}
+\keyword{internal}

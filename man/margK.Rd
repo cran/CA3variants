@@ -21,9 +21,9 @@ The three-way contingency table.
 The tube marginals of the considered  three-way contingency table.
 }
 
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.
+%}
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 }
@@ -44,5 +44,5 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{array}
-\keyword{marginal}% __ONLY ONE__ keyword per line
+%\keyword{array}
+\keyword{internal}% __ONLY ONE__ keyword per line

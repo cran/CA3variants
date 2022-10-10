@@ -18,9 +18,9 @@ The matrices of the row, column and tube components derived via the Tucker3 mode
 \value{
 The three-way reconstructed table of centred profiles. 
 }
-\references{
-Beh E J and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
-}
+%\references{
+%Beh E J and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.
+%}
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 }
@@ -39,5 +39,5 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{reconstruction}
-\keyword{multivariate}% __ONLY ONE__ keyword per line
+%\keyword{reconstruction}
+\keyword{internal}% __ONLY ONE__ keyword per line

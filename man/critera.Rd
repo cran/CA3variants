@@ -17,7 +17,7 @@ The old component of the first mode.}
 The new component of the first mode.}
 }
 \references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Kroonenberg PM (1994) The TUCKALS line: a suite of programs for three-way data analysis. Computational Statistics and Data Analysis, 18, 73--96.
 }
 \author{
 Rosaria Lombardo, Eric J Beh}
@@ -26,5 +26,5 @@ Rosaria Lombardo, Eric J Beh}
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{tucker}
-\keyword{component}% __ONLY ONE__ keyword per line
+\keyword{internal}
+%\keyword{component}% __ONLY ONE__ keyword per line

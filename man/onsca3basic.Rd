@@ -57,7 +57,8 @@ They help to explain the strength of the association between the three principal
 \item{iteration }{The number of iterations that are required for the TUCKALS3 algorithm to converge.}
 }
 \references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Lombardo R, Beh EJ and Kroonenberg PM (2021) Symmetrical and Non-Symmetrical Variants of Three-Way Correspondence Analysis for Ordered Variables. 
+Statistical Science, 36 (4), 542-561.
 }
 \author{
 Rosaria Lombardo, Eric J Beh.
@@ -67,4 +68,4 @@ Rosaria Lombardo, Eric J Beh.
 %##-- ==>  Define data, use random,
 %##--	or do  help(data=index)  for the standard data sets.
 %}
-\keyword{ordered}
+\keyword{internal}

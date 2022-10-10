@@ -18,10 +18,10 @@ The original three-way contingency table.
 %\value{The criterion used in Tuckals3 is the sum of squares of the 
 %differences between the weighted data array and the reconstructed data array. 
 %}
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.\cr
+%}
 \author{
 Rosaria Lombardo, Eric J Beh.
 }
-\keyword{criterion}% __ONLY ONE__ keyword per line
+\keyword{internal}% __ONLY ONE__ keyword per line

@@ -27,9 +27,9 @@ It is utilised from the function \code{tuckerORDERED}.
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 %}
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.
+%}
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 }
@@ -51,5 +51,5 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Tucker3 components}
-\keyword{multivariate}% __ONLY ONE__ keyword per line
+%\keyword{Tucker3 components}
+\keyword{internal}% __ONLY ONE__ keyword per line

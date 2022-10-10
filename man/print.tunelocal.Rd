@@ -45,7 +45,6 @@ see Ceulemans and Kiers  (2006).}
 bootstrap samples. By defaults, \code{boots = FALSE}.}
 }
 \references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
 Wilderjans T F, Ceulemans E, and Meers K (2013) CHull: A generic convex hull based model
 selection method. Behavior Research Methods, 45, 1-15.\cr
 Ceulemans E, and Kiers H A L (2006) Selecting among three-mode principal component models

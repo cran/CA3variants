@@ -17,9 +17,10 @@ The reconstruction of the data array using the three component matrices and the 
 differences between the weighted data array and the reconstructed data array. 
 }
 \references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
+Kroonenberg PM (1994) The TUCKALS line: a suite of programs for three-way data analysis. Computational Statistics and Data Analysis, 18, 73--96.
 }
 \author{
 Rosaria Lombardo, Eric J Beh.
 }
-\keyword{criterion}% __ONLY ONE__ keyword per line
+\keyword{internal}% __ONLY ONE__ keyword per line
+%\keyword{criterion}% __ONLY ONE__ keyword per line

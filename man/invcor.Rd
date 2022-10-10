@@ -37,7 +37,6 @@ One of the three component to change.}
 \references{
 Kroonenberg PM (1994) The TUCKALS line: a suite of programs for three-way data analysis. Computational Statistics and Data Analysis, 18, 73--96.
 }
-
 \author{
 Rosaria Lombardo and Pieter M Kroonenberg.}
 %\note{
@@ -55,5 +54,5 @@ Rosaria Lombardo and Pieter M Kroonenberg.}
 %##--	or do  help(data=index)  for the standard data sets.
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{core}
-\keyword{sign}% __ONLY ONE__ keyword per line
+%\keyword{core}
+\keyword{internal}% __ONLY ONE__ keyword per line

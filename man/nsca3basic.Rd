@@ -73,5 +73,5 @@ Rosaria Lombardo, Eric J Beh.
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{multivariate}% __ONLY ONE__ keyword per line
-\keyword{three-way non-symmetric correspondece analysis }% __ONLY ONE__ keyword per line
+%\keyword{multivariate}% __ONLY ONE__ keyword per line
+\keyword{internal}% __ONLY ONE__ keyword per line

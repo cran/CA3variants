@@ -35,15 +35,12 @@ The pointers to the columns of the component matrix that are responsible for the
 \references{
 Kroonenberg PM (1994) The TUCKALS line: a suite of programs for three-way data analysis. Computational Statistics and Data Analysis, 18, 73--96.
 }
-
 \author{
 Rosaria Lombardo and Pieter M Kroonenberg.}
 %\note{
 %%  ~~further notes~~
 %}
-
 %% ~Make other sections like Warning with \section{Warning }{....} ~
-
 %\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
@@ -53,5 +50,5 @@ Rosaria Lombardo and Pieter M Kroonenberg.}
 %##--	or do  help(data=index)  for the standard data sets.
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ordered }
-\keyword{ array}% __ONLY ONE__ keyword per line
+%\keyword{ ordered }
+\keyword{internal}% __ONLY ONE__ keyword per line

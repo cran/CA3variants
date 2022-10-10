@@ -38,12 +38,12 @@ it is equal to \code{column-tube}, but could be \code{row}.
 }
 \item{addlines}{The input parameter for plotting lines in  biplot. By default, it is equal to \code{addlines = TRUE}.}
 }
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis: Theory, Practice and New Strategies. John Wiley & Sons.\cr
-Lombardo R Beh EJ (2016) Variants of Simple Correspondence Analysis. The R Journal, 8 (2), 167--184.\cr
-Van de Velden M, Iodice D'Enza A, Palumbo F (2017) Cluster Correspondence Analysis. Psychometrika, 82, 158--185.\cr
-Gower JC, Lubbe SG, and Le Roux, NJ (2011) Understanding biplots. New York: Wiley.
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis: Theory, Practice %and New Strategies. John Wiley & Sons.\cr
+%Lombardo R Beh EJ (2016) Variants of Simple Correspondence Analysis. %The R Journal, 8 (2), 167--184.\cr
+%Van de Velden M, Iodice D'Enza A, Palumbo F (2017) Cluster %Correspondence Analysis. Psychometrika, 82, 158--185.\cr
+%Gower JC, Lubbe SG, and Le Roux, NJ (2011) Understanding biplots. New %York: Wiley.
+%}
 \author{
 Rosaria Lombardo, Eric J. Beh and Michel van de Velden.
 }
@@ -54,4 +54,4 @@ This function depends on the \code{R} library \code{plotly}.
 %data(asbestos)
 %cabasic(asbestos)
 %}
-\keyword{biplot}
+\keyword{internal}

@@ -41,9 +41,9 @@ variables.
 \item{x}{The three-way contingency table.}
 %% ...
 }
-\references{
-Beh E J and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
-}
+%\references{
+%Beh E J and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.\cr
+%}
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 }
@@ -63,5 +63,5 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Trivariate Moment Decomposition}
-\keyword{Tucker3}% __ONLY ONE__ keyword per line
+%\keyword{Trivariate Moment Decomposition}
+\keyword{internal}% __ONLY ONE__ keyword per line

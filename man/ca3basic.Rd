@@ -51,9 +51,9 @@ as generalised singular value table. They help to explain the strength of the as
 three principal components.}
 \item{iteration}{The number of iterations that are required for the TUCKALS3 algorithm to converge.}
 }
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.\cr
+%}
 \author{
 Rosaria Lombardo, Eric J Beh.
 }
@@ -62,4 +62,4 @@ Rosaria Lombardo, Eric J Beh.
 %##-- ==>  Define data, use random,
 %##--	or do  help(data=index)  for the standard data sets.
 %}
-\keyword{ Three-way correspondence analysis}
+\keyword{internal}

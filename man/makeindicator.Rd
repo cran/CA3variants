@@ -21,15 +21,12 @@ The three-way data array. It must be an \code{R} object array.}
 %%  ~Describe the value returned
 \item{Z}{Output: the N x total number of categories (rows+cols+tubs) indicator matrix}
 }
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
-}
 \author{
-Rosaria Lombardo, Michel van de Velden, Eric J Beh.
+Rosaria Lombardo, Eric J Beh.
 }
 %\examples{
 %data(happy)
 %makeindicator(happy)
 %}
-\keyword{indicator}% use one of  RShowDoc("KEYWORDS")
-\keyword{matrix}% __ONLY ONE__ keyword per line
+%\keyword{indicator}% use one of  RShowDoc("KEYWORDS")
+\keyword{internal}% __ONLY ONE__ keyword per line

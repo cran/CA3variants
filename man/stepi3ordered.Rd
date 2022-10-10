@@ -32,5 +32,5 @@ Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Tucklas3}
-\keyword{multivariate}% __ONLY ONE__ keyword per line
+%\keyword{Tucklas3}
+\keyword{internal}% __ONLY ONE__ keyword per line

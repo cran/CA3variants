@@ -82,7 +82,7 @@ the graphical results of this function.
 Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.\cr
 Van de Velden M, Iodice D'Enza A, Palumbo F (2017) Cluster Correspondence Analysis. Psychometrika, 82, 158--185.\cr
 Gower JC, Lubbe SG, and Le Roux, NJ (2011) Understanding biplots. New York: Wiley.\cr
-Lombardo R, Beh EJ and Kroonenberg PM (2021) Symmetrical and Non-Symmetrical Variants of Three-Way Correspondence Analysis for Ordered Variables. Statistical Science Journal, p. 1-33.
+Lombardo R, Beh EJ and Kroonenberg PM (2021) Symmetrical and Non-Symmetrical Variants of Three-Way Correspondence Analysis for Ordered Variables. Statistical Science, 36 (4), 542-561.
 }
 \author{
 Rosaria Lombardo, Eric J Beh and Michel van de Velden.

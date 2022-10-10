@@ -43,7 +43,7 @@ The function \code{tucker} is utilised from the functions \code{ca3basic}, \code
 \item{cont}{The number of iterations that are required for the Tucker3 algorithm to converge.}
 }
 \references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
+Kroonenberg PM (1994) The TUCKALS line: a suite of programs for three-way data analysis. Computational Statistics and Data Analysis, 18, 73--96.
 }
 \author{
 Rosaria Lombardo, Eric J Beh.
@@ -63,5 +63,5 @@ Rosaria Lombardo, Eric J Beh.
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{multivariate}
-\keyword{Tucklas3}% __ONLY ONE__ keyword per line
+%\keyword{multivariate}
+\keyword{internal}% __ONLY ONE__ keyword per line

@@ -19,12 +19,12 @@ It is utilised by a number of functions: \code{CA3variants}, \code{reconst3}, \c
 \item{x}{The flattened table of size I,JK where I, J and K are the number of the categories
  of rows, columns and tubes, respectively.}
 }
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.
+%}
 \author{
 Rosaria Lombardo, Eric J Beh.
 }
-\keyword{multivariate}
+\keyword{internal}
 
 

@@ -20,13 +20,13 @@ the Tuckals3 algorithm.}
 \value{
 The difference between three-way contingency table and its reconstruction from the Tucker3 model.
 }
-\references{
-Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice and New Strategies. John Wiley & Sons.
-}
+%\references{
+%Beh EJ and Lombardo R (2014) Correspondence Analysis, Theory, Practice %and New Strategies. John Wiley & Sons.
+%}
 \author{
 Rosaria Lombardo, Eric J Beh, Ida Camminatiello.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{criterion}
-\keyword{multivariate}% __ONLY ONE__ keyword per line
+%\keyword{criterion}
+\keyword{internal}% __ONLY ONE__ keyword per line
